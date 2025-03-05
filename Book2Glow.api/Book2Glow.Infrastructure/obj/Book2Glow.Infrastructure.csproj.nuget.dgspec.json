@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jpajot\\source\\repos\\Book2Glow.api\\Book2Glow.Infrastructure\\Book2Glow.Infrastructure.csproj": {}
+    "C:\\Users\\jpajot\\Documents\\Book2glow\\Book2Glow.api\\Book2Glow.Infrastructure\\Book2Glow.Infrastructure.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jpajot\\source\\repos\\Book2Glow.api\\Book2Glow.Infrastructure\\Book2Glow.Infrastructure.csproj": {
+    "C:\\Users\\jpajot\\Documents\\Book2glow\\Book2Glow.api\\Book2Glow.Infrastructure\\Book2Glow.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jpajot\\source\\repos\\Book2Glow.api\\Book2Glow.Infrastructure\\Book2Glow.Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\jpajot\\Documents\\Book2glow\\Book2Glow.api\\Book2Glow.Infrastructure\\Book2Glow.Infrastructure.csproj",
         "projectName": "Book2Glow.Infrastructure",
-        "projectPath": "C:\\Users\\jpajot\\source\\repos\\Book2Glow.api\\Book2Glow.Infrastructure\\Book2Glow.Infrastructure.csproj",
+        "projectPath": "C:\\Users\\jpajot\\Documents\\Book2glow\\Book2Glow.api\\Book2Glow.Infrastructure\\Book2Glow.Infrastructure.csproj",
         "packagesPath": "C:\\Users\\jpajot\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jpajot\\source\\repos\\Book2Glow.api\\Book2Glow.Infrastructure\\obj\\",
+        "outputPath": "C:\\Users\\jpajot\\Documents\\Book2glow\\Book2Glow.api\\Book2Glow.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\jpajot\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -45,6 +45,10 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.13, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[9.0.2, )"

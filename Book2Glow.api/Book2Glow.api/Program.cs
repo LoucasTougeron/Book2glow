@@ -1,4 +1,7 @@
+using Book2Glow.Infrastructure.Data;
+using Book2Glow.Infrastructure.Data.Model;
 using Book2Glow.Service.Extension;
+using Microsoft.AspNetCore.Identity;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -12,6 +15,11 @@ builder.Services.AddSwaggerGen();
 var configuration = builder.Configuration;
 string connexionString = configuration["ConnectionStrings:DataModelDevContext"];
 builder.Services.AddServices(connexionString);
+
+
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
+    .AddEntityFrameworkStores<DataModelContext>()
+    .AddDefaultTokenProviders();
 
 var app = builder.Build();
 

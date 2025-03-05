@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jpajot\\source\\repos\\Book2Glow.api\\Book2Glow.Test\\Book2Glow.Test.csproj": {}
+    "C:\\Users\\jpajot\\Documents\\Book2glow\\Book2Glow.api\\Book2Glow.Test\\Book2Glow.Test.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jpajot\\source\\repos\\Book2Glow.api\\Book2Glow.Test\\Book2Glow.Test.csproj": {
+    "C:\\Users\\jpajot\\Documents\\Book2glow\\Book2Glow.api\\Book2Glow.Test\\Book2Glow.Test.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jpajot\\source\\repos\\Book2Glow.api\\Book2Glow.Test\\Book2Glow.Test.csproj",
+        "projectUniqueName": "C:\\Users\\jpajot\\Documents\\Book2glow\\Book2Glow.api\\Book2Glow.Test\\Book2Glow.Test.csproj",
         "projectName": "Book2Glow.Test",
-        "projectPath": "C:\\Users\\jpajot\\source\\repos\\Book2Glow.api\\Book2Glow.Test\\Book2Glow.Test.csproj",
+        "projectPath": "C:\\Users\\jpajot\\Documents\\Book2glow\\Book2Glow.api\\Book2Glow.Test\\Book2Glow.Test.csproj",
         "packagesPath": "C:\\Users\\jpajot\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jpajot\\source\\repos\\Book2Glow.api\\Book2Glow.Test\\obj\\",
+        "outputPath": "C:\\Users\\jpajot\\Documents\\Book2glow\\Book2Glow.api\\Book2Glow.Test\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\jpajot\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -52,6 +52,10 @@
             "MSTest.TestFramework": {
               "target": "Package",
               "version": "[3.1.1, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.13, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
