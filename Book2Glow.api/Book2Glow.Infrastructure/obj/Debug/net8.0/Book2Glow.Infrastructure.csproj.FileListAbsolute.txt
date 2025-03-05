@@ -1,0 +1,14 @@
+C:\Users\jpajot\source\repos\Book2Glow.api\Book2Glow.Infrastructure\bin\Debug\net8.0\Book2Glow.Infrastructure.deps.json
+C:\Users\jpajot\source\repos\Book2Glow.api\Book2Glow.Infrastructure\bin\Debug\net8.0\Book2Glow.Infrastructure.runtimeconfig.json
+C:\Users\jpajot\source\repos\Book2Glow.api\Book2Glow.Infrastructure\bin\Debug\net8.0\Book2Glow.Infrastructure.dll
+C:\Users\jpajot\source\repos\Book2Glow.api\Book2Glow.Infrastructure\bin\Debug\net8.0\Book2Glow.Infrastructure.pdb
+C:\Users\jpajot\source\repos\Book2Glow.api\Book2Glow.Infrastructure\obj\Debug\net8.0\Book2Glow.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\jpajot\source\repos\Book2Glow.api\Book2Glow.Infrastructure\obj\Debug\net8.0\Book2Glow.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jpajot\source\repos\Book2Glow.api\Book2Glow.Infrastructure\obj\Debug\net8.0\Book2Glow.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\jpajot\source\repos\Book2Glow.api\Book2Glow.Infrastructure\obj\Debug\net8.0\Book2Glow.Infrastructure.AssemblyInfo.cs
+C:\Users\jpajot\source\repos\Book2Glow.api\Book2Glow.Infrastructure\obj\Debug\net8.0\Book2Glow.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\jpajot\source\repos\Book2Glow.api\Book2Glow.Infrastructure\obj\Debug\net8.0\Book2Glow.Infrastructure.dll
+C:\Users\jpajot\source\repos\Book2Glow.api\Book2Glow.Infrastructure\obj\Debug\net8.0\refint\Book2Glow.Infrastructure.dll
+C:\Users\jpajot\source\repos\Book2Glow.api\Book2Glow.Infrastructure\obj\Debug\net8.0\Book2Glow.Infrastructure.pdb
+C:\Users\jpajot\source\repos\Book2Glow.api\Book2Glow.Infrastructure\obj\Debug\net8.0\Book2Glow.Infrastructure.genruntimeconfig.cache
+C:\Users\jpajot\source\repos\Book2Glow.api\Book2Glow.Infrastructure\obj\Debug\net8.0\ref\Book2Glow.Infrastructure.dll

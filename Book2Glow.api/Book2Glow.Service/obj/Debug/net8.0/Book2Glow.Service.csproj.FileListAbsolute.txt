@@ -1,0 +1,17 @@
+C:\Users\jpajot\source\repos\Book2Glow.api\Book2Glow.Service\bin\Debug\net8.0\Book2Glow.Service.deps.json
+C:\Users\jpajot\source\repos\Book2Glow.api\Book2Glow.Service\bin\Debug\net8.0\Book2Glow.Service.runtimeconfig.json
+C:\Users\jpajot\source\repos\Book2Glow.api\Book2Glow.Service\bin\Debug\net8.0\Book2Glow.Service.dll
+C:\Users\jpajot\source\repos\Book2Glow.api\Book2Glow.Service\bin\Debug\net8.0\Book2Glow.Service.pdb
+C:\Users\jpajot\source\repos\Book2Glow.api\Book2Glow.Service\bin\Debug\net8.0\Book2Glow.Infrastructure.dll
+C:\Users\jpajot\source\repos\Book2Glow.api\Book2Glow.Service\bin\Debug\net8.0\Book2Glow.Infrastructure.pdb
+C:\Users\jpajot\source\repos\Book2Glow.api\Book2Glow.Service\obj\Debug\net8.0\Book2Glow.Service.csproj.AssemblyReference.cache
+C:\Users\jpajot\source\repos\Book2Glow.api\Book2Glow.Service\obj\Debug\net8.0\Book2Glow.Service.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jpajot\source\repos\Book2Glow.api\Book2Glow.Service\obj\Debug\net8.0\Book2Glow.Service.AssemblyInfoInputs.cache
+C:\Users\jpajot\source\repos\Book2Glow.api\Book2Glow.Service\obj\Debug\net8.0\Book2Glow.Service.AssemblyInfo.cs
+C:\Users\jpajot\source\repos\Book2Glow.api\Book2Glow.Service\obj\Debug\net8.0\Book2Glow.Service.csproj.CoreCompileInputs.cache
+C:\Users\jpajot\source\repos\Book2Glow.api\Book2Glow.Service\obj\Debug\net8.0\Book2Glo.B75BD20A.Up2Date
+C:\Users\jpajot\source\repos\Book2Glow.api\Book2Glow.Service\obj\Debug\net8.0\Book2Glow.Service.dll
+C:\Users\jpajot\source\repos\Book2Glow.api\Book2Glow.Service\obj\Debug\net8.0\refint\Book2Glow.Service.dll
+C:\Users\jpajot\source\repos\Book2Glow.api\Book2Glow.Service\obj\Debug\net8.0\Book2Glow.Service.pdb
+C:\Users\jpajot\source\repos\Book2Glow.api\Book2Glow.Service\obj\Debug\net8.0\Book2Glow.Service.genruntimeconfig.cache
+C:\Users\jpajot\source\repos\Book2Glow.api\Book2Glow.Service\obj\Debug\net8.0\ref\Book2Glow.Service.dll

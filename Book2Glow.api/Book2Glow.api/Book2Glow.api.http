@@ -1,0 +1,6 @@
+@Book2Glow.api_HostAddress = http://localhost:5199
+
+GET {{Book2Glow.api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
