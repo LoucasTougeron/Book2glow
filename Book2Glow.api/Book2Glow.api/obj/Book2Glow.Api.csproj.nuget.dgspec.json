@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jpajot\\Documents\\Book2glow\\Book2Glow.api\\Book2Glow.api\\Book2Glow.Api.csproj": {}
+    "C:\\Users\\pajot\\OneDrive\\Documents\\Cours\\Master\\M1\\Projet d'étude\\Book2glow\\Book2Glow.api\\Book2Glow.api\\Book2Glow.Api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jpajot\\Documents\\Book2glow\\Book2Glow.api\\Book2Glow.api\\Book2Glow.Api.csproj": {
+    "C:\\Users\\pajot\\OneDrive\\Documents\\Cours\\Master\\M1\\Projet d'étude\\Book2glow\\Book2Glow.api\\Book2Glow.api\\Book2Glow.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jpajot\\Documents\\Book2glow\\Book2Glow.api\\Book2Glow.api\\Book2Glow.Api.csproj",
+        "projectUniqueName": "C:\\Users\\pajot\\OneDrive\\Documents\\Cours\\Master\\M1\\Projet d'étude\\Book2glow\\Book2Glow.api\\Book2Glow.api\\Book2Glow.Api.csproj",
         "projectName": "Book2Glow.Api",
-        "projectPath": "C:\\Users\\jpajot\\Documents\\Book2glow\\Book2Glow.api\\Book2Glow.api\\Book2Glow.Api.csproj",
-        "packagesPath": "C:\\Users\\jpajot\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jpajot\\Documents\\Book2glow\\Book2Glow.api\\Book2Glow.api\\obj\\",
+        "projectPath": "C:\\Users\\pajot\\OneDrive\\Documents\\Cours\\Master\\M1\\Projet d'étude\\Book2glow\\Book2Glow.api\\Book2Glow.api\\Book2Glow.Api.csproj",
+        "packagesPath": "C:\\Users\\pajot\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\pajot\\OneDrive\\Documents\\Cours\\Master\\M1\\Projet d'étude\\Book2glow\\Book2Glow.api\\Book2Glow.api\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\jpajot\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\pajot\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,14 +26,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\jpajot\\Documents\\Book2glow\\Book2Glow.api\\Book2Glow.Service\\Book2Glow.Service.csproj": {
-                "projectPath": "C:\\Users\\jpajot\\Documents\\Book2glow\\Book2Glow.api\\Book2Glow.Service\\Book2Glow.Service.csproj"
+              "C:\\Users\\pajot\\OneDrive\\Documents\\Cours\\Master\\M1\\Projet d'étude\\Book2glow\\Book2Glow.api\\Book2Glow.Service\\Book2Glow.Service.csproj": {
+                "projectPath": "C:\\Users\\pajot\\OneDrive\\Documents\\Cours\\Master\\M1\\Projet d'étude\\Book2glow\\Book2Glow.api\\Book2Glow.Service\\Book2Glow.Service.csproj"
               }
             }
           }
@@ -38,17 +43,16 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[8.0.13, )"
+            },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
               "version": "[8.0.13, )"
@@ -80,6 +84,10 @@
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.4.0, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[8.6.0, )"
             }
           },
           "imports": [
@@ -101,21 +109,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\jpajot\\Documents\\Book2glow\\Book2Glow.api\\Book2Glow.Infrastructure\\Book2Glow.Infrastructure.csproj": {
+    "C:\\Users\\pajot\\OneDrive\\Documents\\Cours\\Master\\M1\\Projet d'étude\\Book2glow\\Book2Glow.api\\Book2Glow.Infrastructure\\Book2Glow.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jpajot\\Documents\\Book2glow\\Book2Glow.api\\Book2Glow.Infrastructure\\Book2Glow.Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\pajot\\OneDrive\\Documents\\Cours\\Master\\M1\\Projet d'étude\\Book2glow\\Book2Glow.api\\Book2Glow.Infrastructure\\Book2Glow.Infrastructure.csproj",
         "projectName": "Book2Glow.Infrastructure",
-        "projectPath": "C:\\Users\\jpajot\\Documents\\Book2glow\\Book2Glow.api\\Book2Glow.Infrastructure\\Book2Glow.Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\jpajot\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jpajot\\Documents\\Book2glow\\Book2Glow.api\\Book2Glow.Infrastructure\\obj\\",
+        "projectPath": "C:\\Users\\pajot\\OneDrive\\Documents\\Cours\\Master\\M1\\Projet d'étude\\Book2glow\\Book2Glow.api\\Book2Glow.Infrastructure\\Book2Glow.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\pajot\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\pajot\\OneDrive\\Documents\\Cours\\Master\\M1\\Projet d'étude\\Book2glow\\Book2Glow.api\\Book2Glow.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\jpajot\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\pajot\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -123,6 +135,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -135,17 +148,16 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[8.0.13, )"
+            },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
               "version": "[8.0.13, )"
@@ -173,6 +185,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[9.0.2, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[8.6.0, )"
             }
           },
           "imports": [
@@ -191,21 +207,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\jpajot\\Documents\\Book2glow\\Book2Glow.api\\Book2Glow.Service\\Book2Glow.Service.csproj": {
+    "C:\\Users\\pajot\\OneDrive\\Documents\\Cours\\Master\\M1\\Projet d'étude\\Book2glow\\Book2Glow.api\\Book2Glow.Service\\Book2Glow.Service.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jpajot\\Documents\\Book2glow\\Book2Glow.api\\Book2Glow.Service\\Book2Glow.Service.csproj",
+        "projectUniqueName": "C:\\Users\\pajot\\OneDrive\\Documents\\Cours\\Master\\M1\\Projet d'étude\\Book2glow\\Book2Glow.api\\Book2Glow.Service\\Book2Glow.Service.csproj",
         "projectName": "Book2Glow.Service",
-        "projectPath": "C:\\Users\\jpajot\\Documents\\Book2glow\\Book2Glow.api\\Book2Glow.Service\\Book2Glow.Service.csproj",
-        "packagesPath": "C:\\Users\\jpajot\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jpajot\\Documents\\Book2glow\\Book2Glow.api\\Book2Glow.Service\\obj\\",
+        "projectPath": "C:\\Users\\pajot\\OneDrive\\Documents\\Cours\\Master\\M1\\Projet d'étude\\Book2glow\\Book2Glow.api\\Book2Glow.Service\\Book2Glow.Service.csproj",
+        "packagesPath": "C:\\Users\\pajot\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\pajot\\OneDrive\\Documents\\Cours\\Master\\M1\\Projet d'étude\\Book2glow\\Book2Glow.api\\Book2Glow.Service\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\jpajot\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\pajot\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -213,14 +233,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\jpajot\\Documents\\Book2glow\\Book2Glow.api\\Book2Glow.Infrastructure\\Book2Glow.Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\jpajot\\Documents\\Book2glow\\Book2Glow.api\\Book2Glow.Infrastructure\\Book2Glow.Infrastructure.csproj"
+              "C:\\Users\\pajot\\OneDrive\\Documents\\Cours\\Master\\M1\\Projet d'étude\\Book2glow\\Book2Glow.api\\Book2Glow.Infrastructure\\Book2Glow.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\pajot\\OneDrive\\Documents\\Cours\\Master\\M1\\Projet d'étude\\Book2glow\\Book2Glow.api\\Book2Glow.Infrastructure\\Book2Glow.Infrastructure.csproj"
               }
             }
           }
@@ -229,17 +250,16 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[8.0.13, )"
+            },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
               "version": "[8.0.13, )"
@@ -267,6 +287,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[9.0.2, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[8.6.0, )"
             }
           },
           "imports": [
@@ -285,7 +309,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

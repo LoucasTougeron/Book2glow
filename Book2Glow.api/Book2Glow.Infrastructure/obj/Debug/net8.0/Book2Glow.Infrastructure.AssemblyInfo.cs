@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Book2Glow.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0f904b4e42b105ea231b84ce511992a4ed0f4774")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a771c3fc3083b42489fb8ec4a1dc212fe58e31d4")]
 [assembly: System.Reflection.AssemblyProductAttribute("Book2Glow.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Book2Glow.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,14 +1,13 @@
 ﻿using Book2Glow.Infrastructure.Data.Model;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
 namespace Book2Glow.Infrastructure.Data
 {
-    public class DataModelContext : DbContext
+    public class DataModelContext : IdentityDbContext<ApplicationUser>
     {
 
-        public DbSet<Client> clients { get; set; }
-        public DbSet<Provider> providers { get; set; }
         public DataModelContext(DbContextOptions<DataModelContext> options) : base(options)
         {
 
@@ -19,18 +18,7 @@ namespace Book2Glow.Infrastructure.Data
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
             base.OnModelCreating(modelBuilder);
 
-            // Relation 1-1 entre User et Client
-            modelBuilder.Entity<ApplicationUser>()
-                .HasOne(u => u.Client)
-                .WithOne(c => c.User)
-                .HasForeignKey<Client>(c => c.Id);
-
-            // Relation 1-1 entre User et Provider
-            modelBuilder.Entity<ApplicationUser>()
-                .HasOne(u => u.Provider)
-                .WithOne(p => p.User)
-                .HasForeignKey<Provider>(p => p.Id);
         }
     }
 }
-}
+
