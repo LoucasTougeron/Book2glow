@@ -1,4 +1,5 @@
 ﻿using Book2Glow.Infrastructure.Extension;
+using Book2Glow.Service.Service;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Book2Glow.Service.Extension
@@ -8,6 +9,8 @@ namespace Book2Glow.Service.Extension
         public static void AddServices(this IServiceCollection services, string connexionString)
         {
             services.AddInfrastructure(connexionString);
+            services.AddScoped<IBusinessService, BusinessService>();
+
         }
     }
 }

@@ -251,3 +251,5 @@ C:\Users\pajot\OneDrive\Documents\Cours\Master\M1\Projet d'étude\Book2glow\Book
 C:\Users\pajot\OneDrive\Documents\Cours\Master\M1\Projet d'étude\Book2glow\Book2Glow.api\Book2Glow.Test\obj\Debug\net8.0\Book2Glow.Test.pdb
 C:\Users\pajot\OneDrive\Documents\Cours\Master\M1\Projet d'étude\Book2glow\Book2Glow.api\Book2Glow.Test\obj\Debug\net8.0\Book2Glow.Test.genruntimeconfig.cache
 C:\Users\pajot\OneDrive\Documents\Cours\Master\M1\Projet d'étude\Book2glow\Book2Glow.api\Book2Glow.Test\obj\Debug\net8.0\ref\Book2Glow.Test.dll
+C:\Users\pajot\OneDrive\Documents\Cours\Master\M1\Projet d'étude\Book2glow\Book2Glow.api\Book2Glow.Test\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\pajot\OneDrive\Documents\Cours\Master\M1\Projet d'étude\Book2glow\Book2Glow.api\Book2Glow.Test\bin\Debug\net8.0\Microsoft.Bcl.Memory.dll

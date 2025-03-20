@@ -12,7 +12,7 @@ namespace Book2Glow.Infrastructure.Data
         {
 
         }
-
+        public DbSet<BusinessModel> Businesses { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());

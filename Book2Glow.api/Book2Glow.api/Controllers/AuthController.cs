@@ -32,11 +32,16 @@ public class AuthController : ControllerBase
     public async Task<IActionResult> Register([FromBody] RegisterModel model)
     {
         var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName,PhoneNumber = model.PhoneNumber };
+
+        if (!new[] { "Customer", "Provider" }.Contains(model.Role))
+            return BadRequest(new { message = "Rôle invalide" });
+
         var result = await _userManager.CreateAsync(user, model.Password);
 
         if (!result.Succeeded)
             return BadRequest(result.Errors);
 
+        await _userManager.AddToRoleAsync(user, model.Role);
         return Ok(new { message = "Inscription réussie !" });
     }
 
@@ -63,16 +68,27 @@ public class AuthController : ControllerBase
         return Ok(new { user.Email, user.FirstName, user.LastName });
     }
 
+    [Authorize(Roles = "Customer,Provider")]
+    [HttpGet("protected")]
+    public IActionResult GetProtectedRoute()
+    {
+        return Ok(new { message = "Bienvenue sur la route protégée !" });
+    }
+
     // 🔑 Générer un token JWT
     private string GenerateJwtToken(ApplicationUser user)
     {
-        var claims = new[]
-        {
-            new Claim(JwtRegisteredClaimNames.Sub, user.Id),
-            new Claim(JwtRegisteredClaimNames.Email, user.Email),
-            new Claim(ClaimTypes.NameIdentifier, user.Id)
-        };
+        var userRoles = _userManager.GetRolesAsync(user).Result;
 
+        var claims = new List<Claim>
+    {
+        new Claim(JwtRegisteredClaimNames.Sub, user.Id),
+        new Claim(JwtRegisteredClaimNames.Email, user.Email),
+        new Claim(ClaimTypes.NameIdentifier, user.Id)
+    };
+
+        
+        claims.AddRange(userRoles.Select(role => new Claim(ClaimTypes.Role, role)));
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
         var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
         var token = new JwtSecurityToken(_configuration["Jwt:Issuer"],

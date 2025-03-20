@@ -7,6 +7,8 @@ namespace Book2Glow.Infrastructure.Data.Model
     {
         public string FirstName { get; set; }  
         public string LastName { get; set; } 
-        public string PhoneNumber { get; set; } 
+        public string PhoneNumber { get; set; }
+
+        public ICollection<BusinessModel> Businesses { get; set; }
     }
 }
