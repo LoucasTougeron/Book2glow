@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "7V/kBGmlWqJUw2Op9nP2VbshClVbAjsb7U5ePY9zTZVJRS5tr/MAjOY9V3oFocKOmzDReb6OYPdp3gvzJGMiHw==",
+  "dgSpecHash": "f1pdzFk4Q3j5ICYoWtQsUyVQPKb5CvKUFjJ7U8B6m6T8hoHr2NtbaT3Th3Tx+UmJfaguIcbPbDKT8DN4bsqf0g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\pajot\\OneDrive\\Documents\\Cours\\Master\\M1\\Projet d'étude\\Book2glow\\Book2Glow.api\\Book2Glow.api\\Book2Glow.Api.csproj",
+  "projectFilePath": "C:\\Users\\pajot\\OneDrive\\Documents\\Cours\\Master\\M1\\Projet d'étude\\Book2glow\\Book2Glow.api\\Book2Glow.API\\Book2Glow.Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\pajot\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\pajot\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

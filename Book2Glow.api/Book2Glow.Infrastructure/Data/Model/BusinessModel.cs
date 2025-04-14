@@ -47,5 +47,6 @@ namespace Book2Glow.Infrastructure.Data.Model
         [ForeignKey("ApplicationUserId")]
         public ApplicationUser? Creator;
 
+        public ICollection<CategoryModel> Categories { get; set; } = new List<CategoryModel>();
     }
 }
