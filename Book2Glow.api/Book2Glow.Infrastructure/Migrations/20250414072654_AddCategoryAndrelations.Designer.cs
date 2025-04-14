@@ -4,6 +4,7 @@ using Book2Glow.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Book2Glow.Infrastructure.Migrations
 {
     [DbContext(typeof(DataModelContext))]
-    partial class DataModelContextModelSnapshot : ModelSnapshot
+    [Migration("20250414072654_AddCategoryAndrelations")]
+    partial class AddCategoryAndrelations
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -96,36 +99,6 @@ namespace Book2Glow.Infrastructure.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("Book2Glow.Infrastructure.Data.Model.BookingModel", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("B_Id");
-
-                    b.Property<Guid>("ServiceId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid?>("ServiceModelId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateOnly>("StartDate")
-                        .HasColumnType("date")
-                        .HasColumnName("B_StartDate");
-
-                    b.Property<TimeOnly>("StartTime")
-                        .HasColumnType("time")
-                        .HasColumnName("B_StartTime");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ServiceId");
-
-                    b.HasIndex("ServiceModelId");
-
-                    b.ToTable("Bookings");
-                });
-
             modelBuilder.Entity("Book2Glow.Infrastructure.Data.Model.BusinessModel", b =>
                 {
                     b.Property<Guid>("Id")
@@ -200,37 +173,6 @@ namespace Book2Glow.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Category");
-                });
-
-            modelBuilder.Entity("Book2Glow.Infrastructure.Data.Model.ServiceModel", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("S_Id");
-
-                    b.Property<Guid>("CategoryId")
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("S_CategoryId");
-
-                    b.Property<float>("amount")
-                        .HasColumnType("real")
-                        .HasColumnName("S_Amount");
-
-                    b.Property<int>("duration")
-                        .HasColumnType("int")
-                        .HasColumnName("S_Duration");
-
-                    b.Property<string>("name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("S_Name");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CategoryId");
-
-                    b.ToTable("Service");
                 });
 
             modelBuilder.Entity("BusinessModelCategoryModel", b =>
@@ -381,21 +323,6 @@ namespace Book2Glow.Infrastructure.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("Book2Glow.Infrastructure.Data.Model.BookingModel", b =>
-                {
-                    b.HasOne("Book2Glow.Infrastructure.Data.Model.ServiceModel", "Service")
-                        .WithMany()
-                        .HasForeignKey("ServiceId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Book2Glow.Infrastructure.Data.Model.ServiceModel", null)
-                        .WithMany("Bookings")
-                        .HasForeignKey("ServiceModelId");
-
-                    b.Navigation("Service");
-                });
-
             modelBuilder.Entity("Book2Glow.Infrastructure.Data.Model.BusinessModel", b =>
                 {
                     b.HasOne("Book2Glow.Infrastructure.Data.Model.ApplicationUser", null)
@@ -403,17 +330,6 @@ namespace Book2Glow.Infrastructure.Migrations
                         .HasForeignKey("ApplicationUserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("Book2Glow.Infrastructure.Data.Model.ServiceModel", b =>
-                {
-                    b.HasOne("Book2Glow.Infrastructure.Data.Model.CategoryModel", "Category")
-                        .WithMany("Services")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Category");
                 });
 
             modelBuilder.Entity("BusinessModelCategoryModel", b =>
@@ -485,16 +401,6 @@ namespace Book2Glow.Infrastructure.Migrations
             modelBuilder.Entity("Book2Glow.Infrastructure.Data.Model.ApplicationUser", b =>
                 {
                     b.Navigation("Businesses");
-                });
-
-            modelBuilder.Entity("Book2Glow.Infrastructure.Data.Model.CategoryModel", b =>
-                {
-                    b.Navigation("Services");
-                });
-
-            modelBuilder.Entity("Book2Glow.Infrastructure.Data.Model.ServiceModel", b =>
-                {
-                    b.Navigation("Bookings");
                 });
 #pragma warning restore 612, 618
         }

@@ -4,6 +4,7 @@ using Book2Glow.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Book2Glow.Infrastructure.Migrations
 {
     [DbContext(typeof(DataModelContext))]
-    partial class DataModelContextModelSnapshot : ModelSnapshot
+    [Migration("20250414120504_AddServicesAndRelatio")]
+    partial class AddServicesAndRelatio
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -94,36 +97,6 @@ namespace Book2Glow.Infrastructure.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
-                });
-
-            modelBuilder.Entity("Book2Glow.Infrastructure.Data.Model.BookingModel", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("B_Id");
-
-                    b.Property<Guid>("ServiceId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid?>("ServiceModelId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateOnly>("StartDate")
-                        .HasColumnType("date")
-                        .HasColumnName("B_StartDate");
-
-                    b.Property<TimeOnly>("StartTime")
-                        .HasColumnType("time")
-                        .HasColumnName("B_StartTime");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ServiceId");
-
-                    b.HasIndex("ServiceModelId");
-
-                    b.ToTable("Bookings");
                 });
 
             modelBuilder.Entity("Book2Glow.Infrastructure.Data.Model.BusinessModel", b =>
@@ -381,21 +354,6 @@ namespace Book2Glow.Infrastructure.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("Book2Glow.Infrastructure.Data.Model.BookingModel", b =>
-                {
-                    b.HasOne("Book2Glow.Infrastructure.Data.Model.ServiceModel", "Service")
-                        .WithMany()
-                        .HasForeignKey("ServiceId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Book2Glow.Infrastructure.Data.Model.ServiceModel", null)
-                        .WithMany("Bookings")
-                        .HasForeignKey("ServiceModelId");
-
-                    b.Navigation("Service");
-                });
-
             modelBuilder.Entity("Book2Glow.Infrastructure.Data.Model.BusinessModel", b =>
                 {
                     b.HasOne("Book2Glow.Infrastructure.Data.Model.ApplicationUser", null)
@@ -490,11 +448,6 @@ namespace Book2Glow.Infrastructure.Migrations
             modelBuilder.Entity("Book2Glow.Infrastructure.Data.Model.CategoryModel", b =>
                 {
                     b.Navigation("Services");
-                });
-
-            modelBuilder.Entity("Book2Glow.Infrastructure.Data.Model.ServiceModel", b =>
-                {
-                    b.Navigation("Bookings");
                 });
 #pragma warning restore 612, 618
         }
