@@ -12,12 +12,10 @@ namespace Book2Glow.Api.Controllers
     public class BusinessController : ControllerBase
     {
         private readonly IBusinessService _businessService;
-        private readonly ILogger<BusinessController> _logger;
         private readonly UserManager<ApplicationUser> _userManager;
         public BusinessController(IBusinessService businessService, ILogger<BusinessController> logger, UserManager<ApplicationUser> userManager)
         {
             _businessService = businessService;
-            _logger = logger;
             _userManager = userManager;
         }
 

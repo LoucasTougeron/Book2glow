@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\pajot\\OneDrive\\Documents\\Cours\\Master\\M1\\Projet d'étude\\Book2glow\\Book2Glow.api\\Book2Glow.api\\Book2Glow.Api.csproj": {}
+    "C:\\Users\\pajot\\OneDrive\\Documents\\Cours\\Master\\M1\\Projet d'étude\\Book2glow\\Book2Glow.api\\Book2Glow.API\\Book2Glow.Api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\pajot\\OneDrive\\Documents\\Cours\\Master\\M1\\Projet d'étude\\Book2glow\\Book2Glow.api\\Book2Glow.api\\Book2Glow.Api.csproj": {
+    "C:\\Users\\pajot\\OneDrive\\Documents\\Cours\\Master\\M1\\Projet d'étude\\Book2glow\\Book2Glow.api\\Book2Glow.API\\Book2Glow.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\pajot\\OneDrive\\Documents\\Cours\\Master\\M1\\Projet d'étude\\Book2glow\\Book2Glow.api\\Book2Glow.api\\Book2Glow.Api.csproj",
+        "projectUniqueName": "C:\\Users\\pajot\\OneDrive\\Documents\\Cours\\Master\\M1\\Projet d'étude\\Book2glow\\Book2Glow.api\\Book2Glow.API\\Book2Glow.Api.csproj",
         "projectName": "Book2Glow.Api",
-        "projectPath": "C:\\Users\\pajot\\OneDrive\\Documents\\Cours\\Master\\M1\\Projet d'étude\\Book2glow\\Book2Glow.api\\Book2Glow.api\\Book2Glow.Api.csproj",
+        "projectPath": "C:\\Users\\pajot\\OneDrive\\Documents\\Cours\\Master\\M1\\Projet d'étude\\Book2glow\\Book2Glow.api\\Book2Glow.API\\Book2Glow.Api.csproj",
         "packagesPath": "C:\\Users\\pajot\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\pajot\\OneDrive\\Documents\\Cours\\Master\\M1\\Projet d'étude\\Book2glow\\Book2Glow.api\\Book2Glow.api\\obj\\",
+        "outputPath": "C:\\Users\\pajot\\OneDrive\\Documents\\Cours\\Master\\M1\\Projet d'étude\\Book2glow\\Book2Glow.api\\Book2Glow.API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
