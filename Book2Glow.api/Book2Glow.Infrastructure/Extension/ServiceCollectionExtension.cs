@@ -8,7 +8,7 @@ namespace Book2Glow.Infrastructure.Extension
     {
         public static void AddInfrastructure(this IServiceCollection services, string connexionString)
         {
-            services.AddDbContext<DataModelContext>(option => option.UseSqlServer(connexionString));
+            services.AddDbContext<DataModelContext>(option => option.UseNpgsql(connexionString));
 
 
 

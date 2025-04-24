@@ -57,23 +57,6 @@ public class AuthController : ControllerBase
         return Ok(new { token });
     }
 
-    // 🎭 3️⃣ Route pour récupérer le profil de l'utilisateur connecté
-    [Authorize]
-    [HttpGet("me")]
-    public async Task<IActionResult> GetProfile()
-    {
-        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-        var user = await _userManager.FindByIdAsync(userId);
-
-        return Ok(new { user.Email, user.FirstName, user.LastName });
-    }
-
-    [Authorize(Roles = "Customer,Provider")]
-    [HttpGet("protected")]
-    public IActionResult GetProtectedRoute()
-    {
-        return Ok(new { message = "Bienvenue sur la route protégée !" });
-    }
 
     // 🔑 Générer un token JWT
     private string GenerateJwtToken(ApplicationUser user)
