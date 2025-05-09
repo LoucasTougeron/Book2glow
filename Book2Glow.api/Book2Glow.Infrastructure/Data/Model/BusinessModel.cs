@@ -41,7 +41,7 @@ namespace Book2Glow.Infrastructure.Data.Model
         public string Website { get; set; }
 
         [Column("B_UserId")]
-        public string ApplicationUserId { get; set; }
+        public string? ApplicationUserId { get; set; }
 
         // Navigation vers l'utilisateur (créateur)
         [ForeignKey("ApplicationUserId")]
