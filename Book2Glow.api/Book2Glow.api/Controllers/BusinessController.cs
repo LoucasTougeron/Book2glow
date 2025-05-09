@@ -13,10 +13,12 @@ namespace Book2Glow.Api.Controllers
     {
         private readonly IBusinessService _businessService;
         private readonly UserManager<ApplicationUser> _userManager;
-        public BusinessController(IBusinessService businessService, ILogger<BusinessController> logger, UserManager<ApplicationUser> userManager)
+        private readonly IUserService _userService;
+        public BusinessController(IBusinessService businessService, ILogger<BusinessController> logger, UserManager<ApplicationUser> userManager, IUserService userService)
         {
             _businessService = businessService;
             _userManager = userManager;
+            _userService = userService;
         }
 
 
@@ -41,6 +43,24 @@ namespace Book2Glow.Api.Controllers
             return Ok(business);
         }
 
+        [HttpGet("myBuisness")]
+        [ServiceFilter(typeof(RoleMiddleware))]
+        [AuthorizeRole("Provider")]
+        public async Task<ActionResult<BusinessModel>> GetBusinessByUser()
+        {
+            var user = await _userService.GetCurrentUserAsync();
+            if (user == null)
+            {
+                return Unauthorized(new { message = "User not authenticated" });
+            }
+            var businesses = await _businessService.GetBuisnessByUser(user.Id);
+            if (businesses == null)
+            {
+                return NotFound(new { message = "No businesses found for this user" });
+            }
+            return Ok(businesses);
+        }
+
         // POST: api/buisness
         [HttpPost]
         [ServiceFilter(typeof(RoleMiddleware))]
@@ -51,8 +71,9 @@ namespace Book2Glow.Api.Controllers
             {
                 return BadRequest(new { message = "Invalid business data" });
             }
-            var creator = await _userManager.FindByIdAsync(newBusiness.ApplicationUserId);
-            newBusiness.Creator = creator;
+            var user = await _userService.GetCurrentUserAsync();
+            newBusiness.ApplicationUserId = user.Id;
+            newBusiness.Creator = user;
             var createdBusiness = await _businessService.Create(newBusiness);
             return CreatedAtAction(nameof(GetBusinessById), new { id = createdBusiness.Id }, createdBusiness);
         }

@@ -63,5 +63,12 @@ namespace Book2Glow.Service.Service
 
             return existingBusiness; 
         }
+
+        public async Task<List<BusinessModel>> GetBuisnessByUser(string id)
+        {
+            return await _context.Businesses
+            .Where(b => b.ApplicationUserId == id)
+            .ToListAsync();
+        }
     }
 }

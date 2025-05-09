@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Book2Glow.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+908b9f57ab52fecdac7a764afa5463907807ab62")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+49186409699fbf3b9f19cfd8008e6b136ddf00d3")]
 [assembly: System.Reflection.AssemblyProductAttribute("Book2Glow.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Book2Glow.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
