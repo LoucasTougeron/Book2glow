@@ -18,8 +18,6 @@ namespace Book2Glow.Infrastructure.Data.Model
         [Column("C_Name")]
         public string Name { get; set; }
 
-        public ICollection<BusinessModel> Businesses { get; set; } = new List<BusinessModel>();
-
-        public ICollection<ServiceModel> Services { get; set; } = new List<ServiceModel>();
+        public ICollection<BusinessCategoryModel> BusinessCategories { get; set; } = new List<BusinessCategoryModel>();
     }
 }

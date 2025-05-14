@@ -30,6 +30,18 @@ namespace Book2Glow.Api.Controllers
             return Ok(businesses);
         }
 
+        // GET: api/buisness/city/{city}
+        [HttpGet("city/{city}")]
+        public async Task<ActionResult<BusinessModel>> GetBusinessByCity(string city)
+        {
+
+            var business = await _businessService.GetBuisnessByCity(city);
+            if (business == null)
+            {
+                return NotFound(new { message = "Business not found for this city" });
+            }
+            return Ok(business);
+        }
         // GET: api/buisness/{id}
         [HttpGet("{id}")]
         public async Task<ActionResult<BusinessModel>> GetBusinessById(Guid id)
@@ -76,6 +88,26 @@ namespace Book2Glow.Api.Controllers
             newBusiness.Creator = user;
             var createdBusiness = await _businessService.Create(newBusiness);
             return CreatedAtAction(nameof(GetBusinessById), new { id = createdBusiness.Id }, createdBusiness);
+        }
+
+        [HttpPost("{businessId}/categories/{categoryId}")]
+        [ServiceFilter(typeof(RoleMiddleware))]
+        [AuthorizeRole("Provider")]
+        public async Task<IActionResult> AddCategoryToBusiness(Guid businessId, Guid categoryId)
+        {
+            try
+            {
+                await _businessService.AddCategoryToBusinessAsync(businessId, categoryId);
+                return Ok(new { message = "Category added to business successfully" });
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(new { message = ex.Message });
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                return Forbid(ex.Message);
+            }
         }
 
         // PUT: api/buisness/{id}

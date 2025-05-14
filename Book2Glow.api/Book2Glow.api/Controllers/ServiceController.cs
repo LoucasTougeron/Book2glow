@@ -1,4 +1,5 @@
 ﻿using Book2Glow.Infrastructure.Data.Model;
+using Book2Glow.Service.Dto;
 using Book2Glow.Service.Service;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -20,7 +21,7 @@ namespace Book2Glow.Api.Controllers
 
         // GET: api/service
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<CategoryModel>>> GetAllServices()
+        public async Task<ActionResult<IEnumerable<ServiceModel>>> GetAllServices()
         {
             var services = await _serviceService.GetAll();
             return Ok(services);
@@ -28,7 +29,7 @@ namespace Book2Glow.Api.Controllers
 
         // GET: api/service/{id}
         [HttpGet("{id}")]
-        public async Task<ActionResult<CategoryModel>> GetServiceById(Guid id)
+        public async Task<ActionResult<ServiceModel>> GetServiceById(Guid id)
         {
 
             var service = await _serviceService.GetById(id);
@@ -37,6 +38,24 @@ namespace Book2Glow.Api.Controllers
                 return NotFound(new { message = "category not found" });
             }
             return Ok(service);
+        }
+
+        [HttpGet("by-category-city")]
+        public async Task<ActionResult<List<ServiceDto>>> GetServicesByCategoryAndCity([FromQuery] Guid categoryId, [FromQuery] string city)
+        {
+            try
+            {
+                var services = await _serviceService.GetServicesByCategoryAndCity(categoryId, city);
+                return Ok(services);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
         }
 
         // POST: api/service
@@ -51,7 +70,8 @@ namespace Book2Glow.Api.Controllers
             }
 
             var createdCategory = await _serviceService.Create(newService);
-            return CreatedAtAction(nameof(newService), new { id = createdCategory.Id }, createdCategory);
+            return CreatedAtAction(nameof(GetServiceById), new { id = createdCategory.Id }, createdCategory);
+
         }
 
         // PUT: api/service/{id}

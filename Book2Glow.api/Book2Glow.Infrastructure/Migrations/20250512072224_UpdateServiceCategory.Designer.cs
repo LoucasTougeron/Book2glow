@@ -3,6 +3,7 @@ using System;
 using Book2Glow.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Book2Glow.Infrastructure.Migrations
 {
     [DbContext(typeof(DataModelContext))]
-    partial class DataModelContextModelSnapshot : ModelSnapshot
+    [Migration("20250512072224_UpdateServiceCategory")]
+    partial class UpdateServiceCategory
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -191,6 +194,9 @@ namespace Book2Glow.Infrastructure.Migrations
                         .HasColumnType("text")
                         .HasColumnName("B_UserId");
 
+                    b.Property<Guid?>("CategoryModelId")
+                        .HasColumnType("uuid");
+
                     b.Property<string>("City")
                         .IsRequired()
                         .HasColumnType("text")
@@ -234,6 +240,8 @@ namespace Book2Glow.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("ApplicationUserId");
+
+                    b.HasIndex("CategoryModelId");
 
                     b.ToTable("Business");
                 });
@@ -484,6 +492,10 @@ namespace Book2Glow.Infrastructure.Migrations
                     b.HasOne("Book2Glow.Infrastructure.Data.Model.ApplicationUser", null)
                         .WithMany("Businesses")
                         .HasForeignKey("ApplicationUserId");
+
+                    b.HasOne("Book2Glow.Infrastructure.Data.Model.CategoryModel", null)
+                        .WithMany("Businesses")
+                        .HasForeignKey("CategoryModelId");
                 });
 
             modelBuilder.Entity("Book2Glow.Infrastructure.Data.Model.ServiceModel", b =>
@@ -566,6 +578,8 @@ namespace Book2Glow.Infrastructure.Migrations
             modelBuilder.Entity("Book2Glow.Infrastructure.Data.Model.CategoryModel", b =>
                 {
                     b.Navigation("BusinessCategories");
+
+                    b.Navigation("Businesses");
                 });
 
             modelBuilder.Entity("Book2Glow.Infrastructure.Data.Model.ServiceModel", b =>
