@@ -2,3 +2,5 @@
 Book2Glow.api/Book2Glow.Infrastructure/obj/Debug/*
 Book2Glow.api/Book2Glow.Infrastructure/bin/Debug/*
 Book2Glow.api/Book2Glow.api/obj/Debug/*
+**/obj/
+**/bin/
