@@ -15,5 +15,9 @@ namespace Book2Glow.Service.Service
         Task<BusinessModel> Update(Guid id, BusinessModel business);
         Task<bool> Delete(Guid id);
         Task<List<BusinessModel>> GetBuisnessByUser(string id);
+
+        Task<List<BusinessModel>> GetBuisnessByCity (string city);
+
+        Task AddCategoryToBusinessAsync(Guid businessId, Guid categoryId);
     }
 }

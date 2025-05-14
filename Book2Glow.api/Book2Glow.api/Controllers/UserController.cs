@@ -44,7 +44,6 @@ namespace Book2Glow.Api.Controllers
                 return NotFound("User not found.");
             }
 
-            // Mise à jour des informations
             user.FirstName = updateUserDto.FirstName ?? user.FirstName;
             user.LastName = updateUserDto.LastName ?? user.LastName;
             user.Email = updateUserDto.Email ?? user.Email;
@@ -57,7 +56,6 @@ namespace Book2Glow.Api.Controllers
                 return BadRequest(result.Errors);
             }
 
-            // Recharger l'utilisateur après update (optionnel si tu veux être sûr d'avoir les dernières infos)
             user = await _userManager.FindByIdAsync(user.Id);
 
             return Ok(user);

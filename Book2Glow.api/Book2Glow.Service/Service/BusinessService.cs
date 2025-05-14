@@ -12,10 +12,12 @@ namespace Book2Glow.Service.Service
     public class BusinessService : IBusinessService
     {
         private readonly DataModelContext _context;
+        private readonly IUserService _userService;
 
-        public BusinessService(DataModelContext context)
+        public BusinessService(DataModelContext context, IUserService userService)
         {
             _context = context;
+            _userService = userService;
         }
 
         public async Task<BusinessModel> Create(BusinessModel business)
@@ -58,6 +60,12 @@ namespace Book2Glow.Service.Service
                 throw new KeyNotFoundException("Business not found");
             }
 
+            var user = await _userService.GetCurrentUserAsync();
+            if (user.Id != existingBusiness.ApplicationUserId)
+            {
+                throw new Exception("User is not creator of buiness");
+            }
+
             _context.Entry(existingBusiness).CurrentValues.SetValues(business);
             await _context.SaveChangesAsync();
 
@@ -70,5 +78,56 @@ namespace Book2Glow.Service.Service
             .Where(b => b.ApplicationUserId == id)
             .ToListAsync();
         }
+
+        public async Task<List<BusinessModel>> GetBuisnessByCity(string city)
+        {
+            return await _context.Businesses
+            .Where(b => b.City == city)
+            .ToListAsync();
+        }
+
+        public async Task AddCategoryToBusinessAsync(Guid businessId, Guid categoryId)
+        {
+            var existingBusiness = await _context.Businesses
+                .FirstOrDefaultAsync(b => b.Id == businessId);
+
+            if (existingBusiness == null)
+            {
+                throw new KeyNotFoundException("Business not found");
+            }
+
+            var currentUser = await _userService.GetCurrentUserAsync();
+            if (currentUser == null)
+            {
+                throw new UnauthorizedAccessException("User not authenticated");
+            }
+
+
+            var category = await _context.Categories
+                .FirstOrDefaultAsync(c => c.Id == categoryId);
+            if (category == null)
+            {
+                throw new KeyNotFoundException("Category not found");
+            }
+
+            var existingLink = await _context.BusinessCategories
+                .FirstOrDefaultAsync(bc => bc.BusinessId == businessId && bc.CategoryId == categoryId);
+
+            if (existingLink != null)
+            {
+                throw new InvalidOperationException("Business already linked to this category");
+            }
+
+            var businessCategory = new BusinessCategoryModel
+            {
+                Id = Guid.NewGuid(), 
+                BusinessId = businessId,
+                CategoryId = categoryId
+            };
+
+            _context.BusinessCategories.Add(businessCategory);
+            await _context.SaveChangesAsync();
+        }
+
     }
 }

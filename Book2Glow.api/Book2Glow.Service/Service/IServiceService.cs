@@ -1,4 +1,5 @@
 ﻿using Book2Glow.Infrastructure.Data.Model;
+using Book2Glow.Service.Dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,5 +15,7 @@ namespace Book2Glow.Service.Service
         Task<ServiceModel> Create(ServiceModel service);
         Task<ServiceModel> Update(Guid id, ServiceModel service);
         Task<bool> Delete(Guid id);
+
+        Task<List<ServiceDto>> GetServicesByCategoryAndCity(Guid categoryId, string city);
     }
 }

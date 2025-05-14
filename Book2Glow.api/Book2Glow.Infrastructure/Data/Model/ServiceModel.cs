@@ -22,10 +22,11 @@ namespace Book2Glow.Infrastructure.Data.Model
         [Column("S_Name")] // Nom de la colonne en base
         public string name { get; set; }
 
-        [Column("S_CategoryId")]
-        public Guid CategoryId { get; set; }
-        [ForeignKey("CategoryId")]
-        public CategoryModel Category { get; set; }
+        [Column("S_BusinessCategoryId")]
+        public Guid BusinessCategoryId { get; set; }
+
+        [ForeignKey("BusinessCategoryId")]
+        public BusinessCategoryModel? BusinessCategory { get; set; }
 
         public ICollection<BookingModel> Bookings { get; set; } = new List<BookingModel>();
 
