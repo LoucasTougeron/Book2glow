@@ -61,5 +61,20 @@ namespace Book2Glow.Api.Controllers
             return Ok(user);
         }
 
+        
+        [HttpPost("update-password")]
+        [ServiceFilter(typeof(RoleMiddleware))]
+        public async Task<IActionResult> UpdatePassword([FromBody] UpdatePasswordDto dto)
+        {
+            if (dto == null)
+                return BadRequest(new { code = "invalid_request", message = "Format du body invalide." });
+
+            var success = await _userService.UpdateUserPassword(dto.OldPassword, dto.NewPassword);
+            if (!success)
+                return BadRequest(new { code = "invalid_password", message = "Ancien mot de passe incorrect ou erreur lors de la mise à jour." });
+
+            return Ok(new { code = "password_updated", message = "Mot de passe mis à jour avec succès." });
+        }
+
     }
 }

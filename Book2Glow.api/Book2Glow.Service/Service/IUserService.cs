@@ -10,5 +10,6 @@ namespace Book2Glow.Service.Service
     public interface IUserService
     {
         Task<ApplicationUser?> GetCurrentUserAsync();
+        Task<bool> UpdateUserPassword(string oldPassword, string newPassword);
     }
 }

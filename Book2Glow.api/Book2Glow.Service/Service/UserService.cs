@@ -1,10 +1,12 @@
 ﻿using Book2Glow.Infrastructure.Data.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -34,6 +36,33 @@ namespace Book2Glow.Service.Service
                 return null;
 
             return await _userManager.FindByIdAsync(userId);
+        }
+
+        public async Task<bool> UpdateUserPassword(string oldPassword, string newPassword)
+        {
+            var token = _httpContextAccessor.HttpContext?.Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
+            if (string.IsNullOrEmpty(token))
+                return false;
+
+            // Lire le token JWT
+            var handler = new JwtSecurityTokenHandler();
+            var jsonToken = handler.ReadToken(token) as JwtSecurityToken;
+            var userId = jsonToken?.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(userId))
+                return false;
+
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null)
+                return false;
+
+            // Vérifie l'ancien mot de passe
+            var isOldPasswordValid = await _userManager.CheckPasswordAsync(user, oldPassword);
+            if (!isOldPasswordValid)
+                return false;
+
+            // Met à jour le mot de passe
+            var result = await _userManager.ChangePasswordAsync(user, oldPassword, newPassword);
+            return result.Succeeded;
         }
     }
 }
