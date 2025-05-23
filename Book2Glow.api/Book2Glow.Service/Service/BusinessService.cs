@@ -129,5 +129,26 @@ namespace Book2Glow.Service.Service
             await _context.SaveChangesAsync();
         }
 
+        public async Task<List<BusinessModel>> GetBusinessByCategoryAndCity(Guid categoryId, string city)
+        {
+            // Vérifie que la catégorie existe
+            var categoryExists = await _context.Categories.AnyAsync(c => c.Id == categoryId);
+            if (!categoryExists)
+            {
+                throw new KeyNotFoundException("Category not found");
+            }
+
+            var businesses = await _context.BusinessCategories
+                .Include(bc => bc.Business)
+                .Where(bc =>
+                    bc.CategoryId == categoryId &&
+                    bc.Business.City.ToLower() == city.ToLower())
+                .Select(bc => bc.Business)
+                .Distinct()
+                .ToListAsync();
+
+            return businesses;
+        }
+
     }
 }

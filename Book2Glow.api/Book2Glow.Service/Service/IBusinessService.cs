@@ -1,4 +1,5 @@
 ﻿using Book2Glow.Infrastructure.Data.Model;
+using Book2Glow.Service.Dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,5 +20,7 @@ namespace Book2Glow.Service.Service
         Task<List<BusinessModel>> GetBuisnessByCity (string city);
 
         Task AddCategoryToBusinessAsync(Guid businessId, Guid categoryId);
+
+        Task<List<BusinessModel>> GetBusinessByCategoryAndCity(Guid categoryId, string city);
     }
 }
