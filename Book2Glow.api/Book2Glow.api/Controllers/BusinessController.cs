@@ -55,6 +55,26 @@ namespace Book2Glow.Api.Controllers
             return Ok(business);
         }
 
+        [HttpGet("by-category-city")]
+        public async Task<ActionResult<List<BusinessModel>>> GetBusinessesByCategoryAndCity([FromQuery] Guid categoryId, [FromQuery] string city)
+        {
+            try
+            {
+                var businesses = await _businessService.GetBusinessByCategoryAndCity(categoryId, city);
+
+                if (businesses == null || businesses.Count == 0)
+                {
+                    return NotFound(new { message = "No businesses found for the specified category and city." });
+                }
+
+                return Ok(businesses);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(new { message = ex.Message });
+            }
+        }
+
         [HttpGet("myBuisness")]
         [ServiceFilter(typeof(RoleMiddleware))]
         [AuthorizeRole("Provider")]
