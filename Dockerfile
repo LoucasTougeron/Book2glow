@@ -17,7 +17,7 @@ RUN dotnet restore Book2Glow.api/Book2Glow.api.csproj
 COPY . .
 
 # Build
-RUN dotnet publish Book2Glow.api/Book2Glow.api.csproj -c Release -o /app/publish
+RUN dotnet publish Book2Glow.api/Book2Glow.Api/Book2Glow.Api.csproj -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
