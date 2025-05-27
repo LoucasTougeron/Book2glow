@@ -11,13 +11,13 @@ COPY Book2Glow.api/Book2Glow.Service/Book2Glow.Service.csproj Book2Glow.Service/
 COPY Book2Glow.api/Book2Glow.Infrastructure/Book2Glow.Infrastructure.csproj Book2Glow.Infrastructure/
 
 # Restore des dépendances
-RUN dotnet restore Book2Glow.api/Book2Glow.api.csproj
+RUN dotnet restore Book2Glow.api/Book2Glow.api/Book2Glow.Api.csproj
 
 # Copie complète du code
 COPY . .
 
 # Build
-RUN dotnet publish Book2Glow.api/Book2Glow.Api/Book2Glow.Api.csproj -c Release -o /app/publish
+RUN dotnet publish Book2Glow.api/Book2Glow.api/Book2Glow.Api.csproj -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
