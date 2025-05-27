@@ -6,18 +6,18 @@ FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 WORKDIR /src
 
 # Copie tous les projets
-COPY /Book2Glow.api/Book2Glow.Api/Book2Glow.Api.csproj Book2Glow.Api/
-COPY /Book2Glow.api/Book2Glow.Service/Book2Glow.Service.csproj Book2Glow.Service/
-COPY /Book2Glow.api/Book2Glow.Infrastructure/Book2Glow.Infrastructure.csproj Book2Glow.Infrastructure/
+COPY Book2Glow.api/Book2Glow.api.csproj Book2Glow.api/
+COPY Book2Glow.Service/Book2Glow.Service.csproj Book2Glow.Service/
+COPY Book2Glow.Infrastructure/Book2Glow.Infrastructure.csproj Book2Glow.Infrastructure/
 
 # Restore des dépendances
-RUN dotnet restore Book2Glow.Api/Book2Glow.Api.csproj
+RUN dotnet restore Book2Glow.api/Book2Glow.api.csproj
 
 # Copie complète du code
 COPY . .
 
 # Build
-RUN dotnet publish Book2Glow.Api/Book2Glow.Api.csproj -c Release -o /app/publish
+RUN dotnet publish Book2Glow.api/Book2Glow.api.csproj -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
