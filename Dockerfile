@@ -6,7 +6,7 @@ FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 WORKDIR /src
 
 # Copie tous les projets
-COPY Book2Glow.api/Book2Glow.api/Book2Glow.api.csproj Book2Glow.api/
+COPY Book2Glow.api/Book2Glow.api/Book2Glow.Api.csproj Book2Glow.api/
 COPY Book2Glow.api/Book2Glow.Service/Book2Glow.Service.csproj Book2Glow.Service/
 COPY Book2Glow.api/Book2Glow.Infrastructure/Book2Glow.Infrastructure.csproj Book2Glow.Infrastructure/
 
