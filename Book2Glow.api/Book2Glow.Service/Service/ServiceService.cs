@@ -143,7 +143,6 @@ namespace Book2Glow.Service.Service
             bool alreadyBooked = await _context.Bookings
             .AnyAsync(b => b.ServiceId == serviceId && b.StartDate == date && b.StartTime == startTime);
 
-            Console.WriteLine(alreadyBooked.ToString());
             if (alreadyBooked)
                 return "Créneau déjà réservé.";
 
