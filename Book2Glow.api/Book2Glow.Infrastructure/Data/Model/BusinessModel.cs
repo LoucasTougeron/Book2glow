@@ -40,6 +40,12 @@
             [Column("B_Website")]
             public string Website { get; set; }
 
+            [Column("OpeningTime")]
+            public int OpeningTime { get; set; } // en minutes depuis minuit (ex: 540 = 09:00)
+
+            [Column("ClosingTime")]
+            public int ClosingTime { get; set; } // en minutes depuis minuit (ex: 1020 = 17:00)
+
             [Column("B_UserId")]
             public string? ApplicationUserId { get; set; }
 

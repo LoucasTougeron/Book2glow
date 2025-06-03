@@ -1,4 +1,5 @@
-﻿using Book2Glow.Infrastructure.Data.Model;
+﻿using Book2Glow.Api.Dtos;
+using Book2Glow.Infrastructure.Data.Model;
 using Book2Glow.Service.Dto;
 using Book2Glow.Service.Service;
 using Microsoft.AspNetCore.Identity;
@@ -12,11 +13,12 @@ namespace Book2Glow.Api.Controllers
     {
         private readonly IServiceService _serviceService;
         private readonly UserManager<ApplicationUser> _userManager;
-
-        public ServiceController(IServiceService serviceService, UserManager<ApplicationUser> userManager)
+        private readonly IUserService _userService;
+        public ServiceController(IServiceService serviceService, UserManager<ApplicationUser> userManager, IUserService userService)
         {
             _serviceService = serviceService;
             _userManager = userManager;
+            _userService = userService;
         }
 
         // GET: api/service
@@ -109,6 +111,31 @@ namespace Book2Glow.Api.Controllers
             }
 
             return NoContent();
+        }
+
+        [HttpGet("available-slots")]
+        public async Task<IActionResult> GetAvailableSlots(Guid serviceId, int duration, DateOnly date)
+        {
+            var slots = await _serviceService.GetAvailableSlots(serviceId, duration, date);
+            return Ok(slots);
+        }
+
+        [HttpPost("book")]
+        [ServiceFilter(typeof(RoleMiddleware))]
+        public async Task<IActionResult> BookAppointment([FromBody] BookingRequestDto request)
+        {
+            var user = await _userService.GetCurrentUserAsync();
+            if (user == null)
+            {
+                return Unauthorized();
+            }
+            var result = await _serviceService.BookAppointment(
+                request.Date, request.StartTime, request.ServiceId, user.Id);
+
+            if (result == "Réservation effectuée avec succès.")
+                return Ok(new { success = true, message = result });
+
+            return BadRequest(new { success = false, message = result });
         }
     }
 }
