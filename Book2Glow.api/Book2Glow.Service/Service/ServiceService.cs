@@ -44,6 +44,7 @@ namespace Book2Glow.Service.Service
             return await _context.Services.ToListAsync();
         }
 
+
         public async Task<ServiceModel> GetById(Guid id)
         {
             return await _context.Services.FirstOrDefaultAsync(b => b.Id == id);
@@ -89,6 +90,96 @@ namespace Book2Glow.Service.Service
             await _context.SaveChangesAsync();
 
             return existingService;
+        }
+
+        public async Task<List<string>> GetAvailableSlots(Guid serviceId, int duration, DateOnly date)
+        {
+            var business = await _context.Services
+                .Where(s => s.Id == serviceId)
+                .Select(s => s.BusinessCategory.Business)
+                .FirstOrDefaultAsync();
+
+            if (business == null)
+                return new List<string>();
+
+            int openingTime = business.OpeningTime;
+            int closingTime = business.ClosingTime;
+
+            // 🔧 Récupère toutes les réservations + leur durée réelle
+            var bookings = await _context.Bookings
+                .Where(b => b.ServiceId == serviceId && b.StartDate == date)
+                .Include(b => b.Service)
+                .ToListAsync();
+
+            // 🔁 Calcule les créneaux déjà pris
+            var reservedSlots = bookings
+                .Select(b => (Start: b.StartTime, End: b.StartTime + duration))
+                .ToList();
+
+            var availableSlots = new List<string>();
+
+            // 🔍 Itère sur les créneaux possibles
+            for (int current = openingTime; current + duration <= closingTime; current += duration)
+            {
+                double start = current;
+                double end = current + duration;
+
+                bool isOverlapping = reservedSlots.Any(r =>
+                    !(r.End <= start || r.Start >= end)
+                );
+
+                if (!isOverlapping)
+                {
+                    var time = TimeSpan.FromMinutes(current);
+                    availableSlots.Add(time.ToString(@"hh\:mm"));
+                }
+            }
+
+            return availableSlots;
+        }
+
+        public async Task<string> BookAppointment(DateOnly date, int startTime, Guid serviceId, string userId)
+        {
+            bool alreadyBooked = await _context.Bookings
+            .AnyAsync(b => b.ServiceId == serviceId && b.StartDate == date && b.StartTime == startTime);
+
+            if (alreadyBooked)
+                return "Créneau déjà réservé.";
+
+            // 2. Récupère le service pour trouver le business
+            var service = await _context.Services
+                .Include(s => s.BusinessCategory)
+                .ThenInclude(bc => bc.Business)
+                .FirstOrDefaultAsync(s => s.Id == serviceId);
+
+            if (service == null)
+                return "Service introuvable.";
+
+            var businessId = service.BusinessCategory.BusinessId;
+
+            var booking = new BookingModel
+            {
+                Id = Guid.NewGuid(),
+                StartDate = date,
+                StartTime = startTime,
+                ServiceId = serviceId
+            };
+
+            await _context.Bookings.AddAsync(booking);
+
+            // 4. Crée l’entrée dans BookModel
+            var book = new BookModel
+            {
+                Id = Guid.NewGuid(),
+                ApplicationUserId = userId,
+                BusinessId = businessId,
+                BookingId = booking.Id
+            };
+
+            await _context.BookingsBooks.AddAsync(book);
+            await _context.SaveChangesAsync();
+
+            return "Réservation effectuée avec succès.";
         }
     }
 }

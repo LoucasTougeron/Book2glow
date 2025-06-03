@@ -17,5 +17,9 @@ namespace Book2Glow.Service.Service
         Task<bool> Delete(Guid id);
 
         Task<List<ServiceDto>> GetServicesByCategoryAndCity(Guid categoryId, string city);
+
+        Task<List<string>> GetAvailableSlots(Guid serviceId, int duration, DateOnly date);
+
+        Task<string> BookAppointment(DateOnly date, int startTime, Guid serviceId, string userId);
     }
 }

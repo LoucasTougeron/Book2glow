@@ -12,12 +12,12 @@ namespace Book2Glow.Infrastructure.Data.Model
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)] // Auto-généré par la base
-        [Column("B_Id")] // Nom de la colonne en base
+        [Column("B_Id")] 
         public Guid Id { get; set; }
         [Column("B_StartDate")]
-        public DateOnly StartDate { get; set; } // Stocke les dates
+        public DateOnly StartDate { get; set; } 
         [Column("B_StartTime")]
-        public TimeOnly StartTime { get; set; } // Stocke les heures
+        public int StartTime { get; set; } 
         [ForeignKey("ServiceId")]
         public Guid ServiceId { get; set; }
         public ServiceModel Service { get; set; }

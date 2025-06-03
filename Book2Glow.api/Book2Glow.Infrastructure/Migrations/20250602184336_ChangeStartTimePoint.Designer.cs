@@ -3,6 +3,7 @@ using System;
 using Book2Glow.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Book2Glow.Infrastructure.Migrations
 {
     [DbContext(typeof(DataModelContext))]
-    partial class DataModelContextModelSnapshot : ModelSnapshot
+    [Migration("20250602184336_ChangeStartTimePoint")]
+    partial class ChangeStartTimePoint
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -136,6 +139,9 @@ namespace Book2Glow.Infrastructure.Migrations
                     b.Property<Guid>("ServiceId")
                         .HasColumnType("uuid");
 
+                    b.Property<Guid?>("ServiceModelId")
+                        .HasColumnType("uuid");
+
                     b.Property<DateOnly>("StartDate")
                         .HasColumnType("date")
                         .HasColumnName("B_StartDate");
@@ -147,6 +153,8 @@ namespace Book2Glow.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("ServiceId");
+
+                    b.HasIndex("ServiceModelId");
 
                     b.ToTable("Bookings");
                 });
@@ -451,10 +459,14 @@ namespace Book2Glow.Infrastructure.Migrations
             modelBuilder.Entity("Book2Glow.Infrastructure.Data.Model.BookingModel", b =>
                 {
                     b.HasOne("Book2Glow.Infrastructure.Data.Model.ServiceModel", "Service")
-                        .WithMany("Bookings")
+                        .WithMany()
                         .HasForeignKey("ServiceId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("Book2Glow.Infrastructure.Data.Model.ServiceModel", null)
+                        .WithMany("Bookings")
+                        .HasForeignKey("ServiceModelId");
 
                     b.Navigation("Service");
                 });
