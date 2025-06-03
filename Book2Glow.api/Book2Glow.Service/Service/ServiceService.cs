@@ -143,6 +143,7 @@ namespace Book2Glow.Service.Service
             bool alreadyBooked = await _context.Bookings
             .AnyAsync(b => b.ServiceId == serviceId && b.StartDate == date && b.StartTime == startTime);
 
+            Console.WriteLine(alreadyBooked.ToString());
             if (alreadyBooked)
                 return "Créneau déjà réservé.";
 
@@ -180,6 +181,25 @@ namespace Book2Glow.Service.Service
             await _context.SaveChangesAsync();
 
             return "Réservation effectuée avec succès.";
+        }
+
+        public async Task<List<BookingDto>> GetAllReservationsAsync(string userId)
+        {
+            var reservations = await _context.BookingsBooks
+        .Include(bb => bb.Booking)
+            .ThenInclude(b => b.Service)
+                .ThenInclude(s => s.BusinessCategory)
+                    .ThenInclude(bc => bc.Business)
+        .Select(bb => new BookingDto
+        {
+            Date = bb.Booking.StartDate,
+            Heure = TimeSpan.FromMinutes(bb.Booking.StartTime).ToString(@"hh\:mm"),
+            Service = bb.Booking.Service.name,
+            Business = bb.Business.Name
+        })
+        .ToListAsync();
+
+            return reservations;
         }
     }
 }

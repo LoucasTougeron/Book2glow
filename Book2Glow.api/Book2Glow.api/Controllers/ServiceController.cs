@@ -137,5 +137,18 @@ namespace Book2Glow.Api.Controllers
 
             return BadRequest(new { success = false, message = result });
         }
+
+        [HttpGet("bookings")]
+        [ServiceFilter(typeof(RoleMiddleware))]
+        public async Task<IActionResult> GetAllbooking ()
+        {
+            var user = await _userService.GetCurrentUserAsync();
+            if (user == null)
+            {
+                return Unauthorized();
+            }
+            var bookings = await _serviceService.GetAllReservationsAsync(user.Id);
+            return Ok(bookings);
+        }
     }
 }
