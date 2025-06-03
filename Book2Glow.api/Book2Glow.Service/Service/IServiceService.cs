@@ -16,6 +16,8 @@ namespace Book2Glow.Service.Service
         Task<ServiceModel> Update(Guid id, ServiceModel service);
         Task<bool> Delete(Guid id);
 
+        Task<List<BookingDto>> GetAllReservationsAsync(string userId);
+
         Task<List<ServiceDto>> GetServicesByCategoryAndCity(Guid categoryId, string city);
 
         Task<List<string>> GetAvailableSlots(Guid serviceId, int duration, DateOnly date);

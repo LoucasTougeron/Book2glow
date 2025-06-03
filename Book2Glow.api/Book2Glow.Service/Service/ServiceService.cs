@@ -181,5 +181,24 @@ namespace Book2Glow.Service.Service
 
             return "Réservation effectuée avec succès.";
         }
+
+        public async Task<List<BookingDto>> GetAllReservationsAsync(string userId)
+        {
+            var reservations = await _context.BookingsBooks
+        .Include(bb => bb.Booking)
+            .ThenInclude(b => b.Service)
+                .ThenInclude(s => s.BusinessCategory)
+                    .ThenInclude(bc => bc.Business)
+        .Select(bb => new BookingDto
+        {
+            Date = bb.Booking.StartDate,
+            Heure = TimeSpan.FromMinutes(bb.Booking.StartTime).ToString(@"hh\:mm"),
+            Service = bb.Booking.Service.name,
+            Business = bb.Business.Name
+        })
+        .ToListAsync();
+
+            return reservations;
+        }
     }
 }
