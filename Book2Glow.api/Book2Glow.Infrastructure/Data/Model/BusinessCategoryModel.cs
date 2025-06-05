@@ -27,7 +27,6 @@ namespace Book2Glow.Infrastructure.Data.Model
         [ForeignKey("CategoryId")]
         public CategoryModel Category { get; set; }
 
-        // Un BusinessCategory peut avoir plusieurs Services
         public ICollection<ServiceModel> Services { get; set; } = new List<ServiceModel>();
     }
 }

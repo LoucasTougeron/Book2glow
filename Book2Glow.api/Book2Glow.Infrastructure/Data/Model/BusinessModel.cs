@@ -41,15 +41,14 @@
             public string Website { get; set; }
 
             [Column("OpeningTime")]
-            public int OpeningTime { get; set; } // en minutes depuis minuit (ex: 540 = 09:00)
+            public int OpeningTime { get; set; }
 
             [Column("ClosingTime")]
-            public int ClosingTime { get; set; } // en minutes depuis minuit (ex: 1020 = 17:00)
+            public int ClosingTime { get; set; }
 
             [Column("B_UserId")]
             public string? ApplicationUserId { get; set; }
 
-            // Navigation vers l'utilisateur (créateur)
             [ForeignKey("ApplicationUserId")]
             public ApplicationUser? Creator;
 

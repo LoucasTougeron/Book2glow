@@ -44,7 +44,6 @@ namespace Book2Glow.Service.Service
             if (string.IsNullOrEmpty(token))
                 return false;
 
-            // Lire le token JWT
             var handler = new JwtSecurityTokenHandler();
             var jsonToken = handler.ReadToken(token) as JwtSecurityToken;
             var userId = jsonToken?.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
@@ -55,12 +54,10 @@ namespace Book2Glow.Service.Service
             if (user == null)
                 return false;
 
-            // Vérifie l'ancien mot de passe
             var isOldPasswordValid = await _userManager.CheckPasswordAsync(user, oldPassword);
             if (!isOldPasswordValid)
                 return false;
 
-            // Met à jour le mot de passe
             var result = await _userManager.ChangePasswordAsync(user, oldPassword, newPassword);
             return result.Succeeded;
         }

@@ -30,20 +30,20 @@ namespace Book2Glow.Infrastructure.Data
 
 
             modelBuilder.Entity<BookingModel>()
-    .HasOne(b => b.Service)
-    .WithMany(s => s.Bookings)
-    .HasForeignKey(b => b.ServiceId)
-    .OnDelete(DeleteBehavior.Cascade);
+                .HasOne(b => b.Service)
+                .WithMany(s => s.Bookings)
+                .HasForeignKey(b => b.ServiceId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<BookingModel>()
                 .Property(b => b.StartDate)
                 .HasColumnType("date"); 
 
             modelBuilder.Entity<BookModel>()
-        .HasOne(b => b.User)
-        .WithMany()
-        .HasForeignKey(b => b.ApplicationUserId)
-        .OnDelete(DeleteBehavior.Restrict); 
+                .HasOne(b => b.User)
+                .WithMany()
+                .HasForeignKey(b => b.ApplicationUserId)
+                .OnDelete(DeleteBehavior.Restrict); 
 
             
             modelBuilder.Entity<BookModel>()

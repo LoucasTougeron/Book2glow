@@ -32,7 +32,7 @@ namespace Book2Glow.Service.Service
             var business = await _context.Businesses.FirstOrDefaultAsync(b => b.Id == id);
             if (business == null)
             {
-                return false; // Business non trouvé
+                return false; 
             }
 
             _context.Businesses.Remove(business);
@@ -131,7 +131,6 @@ namespace Book2Glow.Service.Service
 
         public async Task<List<BusinessModel>> GetBusinessByCategoryAndCity(Guid categoryId, string city)
         {
-            // Vérifie que la catégorie existe
             var categoryExists = await _context.Categories.AnyAsync(c => c.Id == categoryId);
             if (!categoryExists)
             {

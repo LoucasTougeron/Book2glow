@@ -1,4 +1,5 @@
 ﻿using Book2Glow.Infrastructure.Data.Model;
+using Book2Glow.Service.Service;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -12,22 +13,18 @@ using System.Text;
 public class AuthController : ControllerBase
 {
     private readonly UserManager<ApplicationUser> _userManager;
-    private readonly SignInManager<ApplicationUser> _signInManager;
-    private readonly RoleManager<IdentityRole> _roleManager;
     private readonly IConfiguration _configuration;
+    private readonly IAuthService _authService;
 
     public AuthController(UserManager<ApplicationUser> userManager,
-                          SignInManager<ApplicationUser> signInManager,
-                          RoleManager<IdentityRole> roleManager,
-                          IConfiguration configuration)
+                          IConfiguration configuration, IAuthService authService)
     {
         _userManager = userManager;
-        _signInManager = signInManager;
-        _roleManager = roleManager;
         _configuration = configuration;
+        _authService = authService;
     }
 
-    // 🚀 1️⃣ Route pour l'inscription
+    //Post /api/auth/register
     [HttpPost("register")]
     public async Task<IActionResult> Register([FromBody] RegisterModel model)
     {
@@ -45,7 +42,7 @@ public class AuthController : ControllerBase
         return Ok(new { message = "Inscription réussie !" });
     }
 
-    // 🔐 2️⃣ Route pour la connexion et la génération du token JWT
+    //Post /api/auth/login
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody] LoginModel model)
     {
@@ -53,30 +50,8 @@ public class AuthController : ControllerBase
         if (user == null || !(await _userManager.CheckPasswordAsync(user, model.Password)))
             return Unauthorized(new { message = "Identifiants invalides" });
 
-        var token = GenerateJwtToken(user);
+        var token = _authService.GenerateJwtToken(user);
         return Ok(new { token });
     }
-
-
-    // 🔑 Générer un token JWT
-    private string GenerateJwtToken(ApplicationUser user)
-    {
-        var userRoles = _userManager.GetRolesAsync(user).Result;
-
-        var claims = new List<Claim>
-    {
-        new Claim(JwtRegisteredClaimNames.Sub, user.Id),
-        new Claim(JwtRegisteredClaimNames.Email, user.Email),
-        new Claim(ClaimTypes.NameIdentifier, user.Id)
-    };
-
-        
-        claims.AddRange(userRoles.Select(role => new Claim(ClaimTypes.Role, role)));
-        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
-        var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-        var token = new JwtSecurityToken(_configuration["Jwt:Issuer"],
-            _configuration["Jwt:Audience"], claims, expires: DateTime.UtcNow.AddHours(3), signingCredentials: creds);
-
-        return new JwtSecurityTokenHandler().WriteToken(token);
-    }
+  
 }

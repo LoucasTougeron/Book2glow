@@ -8,8 +8,8 @@ namespace Book2Glow.Service.Dto
 {
     public class BookingDto
     {
-        public DateOnly Date { get; set; }
-        public string Heure { get; set; }
+        public DateOnly StartDate { get; set; }
+        public string StartTime { get; set; }
         public string Service { get; set; }
         public string Business { get; set; }
     }

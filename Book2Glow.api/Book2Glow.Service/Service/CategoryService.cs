@@ -29,7 +29,7 @@ namespace Book2Glow.Service.Service
             var category = await _context.Categories.FirstOrDefaultAsync(b => b.Id == id);
             if (category == null)
             {
-                return false; // Category non trouvé
+                return false; 
             }
 
             _context.Categories.Remove(category);
