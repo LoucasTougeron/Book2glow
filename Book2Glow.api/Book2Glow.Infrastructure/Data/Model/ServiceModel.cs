@@ -13,13 +13,13 @@ namespace Book2Glow.Infrastructure.Data.Model
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Column("S_Id")] // Nom de la colonne en base
+        [Column("S_Id")] 
         public Guid Id { get; set; }
-        [Column("S_Duration")] // Nom de la colonne en base
-        public int duration { get; set; } // En minutes
-        [Column("S_Amount")] // Nom de la colonne en base
+        [Column("S_Duration")] 
+        public int duration { get; set; } 
+        [Column("S_Amount")] 
         public float amount { get; set; }
-        [Column("S_Name")] // Nom de la colonne en base
+        [Column("S_Name")] 
         public string name { get; set; }
 
         [Column("S_BusinessCategoryId")]

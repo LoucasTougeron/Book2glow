@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Book2Glow.Api.Controllers
 {
-    [Route("api/buisness")]
+    [Route("api/business")]
     [ApiController]
     public class BusinessController : ControllerBase
     {
@@ -30,7 +30,7 @@ namespace Book2Glow.Api.Controllers
             return Ok(businesses);
         }
 
-        // GET: api/buisness/city/{city}
+        // GET: api/business/city/{city}
         [HttpGet("city/{city}")]
         public async Task<ActionResult<BusinessModel>> GetBusinessByCity(string city)
         {
@@ -42,7 +42,7 @@ namespace Book2Glow.Api.Controllers
             }
             return Ok(business);
         }
-        // GET: api/buisness/{id}
+        // GET: api/business/{id}
         [HttpGet("{id}")]
         public async Task<ActionResult<BusinessModel>> GetBusinessById(Guid id)
         {
@@ -55,7 +55,8 @@ namespace Book2Glow.Api.Controllers
             return Ok(business);
         }
 
-        [HttpGet("by-category-city")]
+        // GET /api/buisness/categorycity
+        [HttpGet("categorycity")]
         public async Task<ActionResult<List<BusinessModel>>> GetBusinessesByCategoryAndCity([FromQuery] Guid categoryId, [FromQuery] string city)
         {
             try
@@ -75,7 +76,8 @@ namespace Book2Glow.Api.Controllers
             }
         }
 
-        [HttpGet("myBuisness")]
+        // GET /api/business/myBusiness
+        [HttpGet("myBusiness")]
         [ServiceFilter(typeof(RoleMiddleware))]
         [AuthorizeRole("Provider")]
         public async Task<ActionResult<BusinessModel>> GetBusinessByUser()
@@ -93,7 +95,7 @@ namespace Book2Glow.Api.Controllers
             return Ok(businesses);
         }
 
-        // POST: api/buisness
+        // POST: api/business
         [HttpPost]
         [ServiceFilter(typeof(RoleMiddleware))]
         [AuthorizeRole("Provider")]
@@ -110,6 +112,7 @@ namespace Book2Glow.Api.Controllers
             return CreatedAtAction(nameof(GetBusinessById), new { id = createdBusiness.Id }, createdBusiness);
         }
 
+        //POST: /api/business/
         [HttpPost("{businessId}/categories/{categoryId}")]
         [ServiceFilter(typeof(RoleMiddleware))]
         [AuthorizeRole("Provider")]
@@ -130,7 +133,7 @@ namespace Book2Glow.Api.Controllers
             }
         }
 
-        // PUT: api/buisness/{id}
+        // PUT: api/business/{id}
         [HttpPut("{id}")]
         [ServiceFilter(typeof(RoleMiddleware))]
         [AuthorizeRole("Provider")]
@@ -147,7 +150,7 @@ namespace Book2Glow.Api.Controllers
             }
         }
 
-        // DELETE: api/buisness/{id}
+        // DELETE: api/business/{id}
         [HttpDelete("{id}")]
         [ServiceFilter(typeof(RoleMiddleware))]
         [AuthorizeRole("Provider")]

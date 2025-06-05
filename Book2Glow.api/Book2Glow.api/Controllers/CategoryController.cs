@@ -10,11 +10,9 @@ namespace Book2Glow.Api.Controllers
     public class CategoryController: ControllerBase
     {
         private readonly ICategoryService _categoryService;
-        private readonly UserManager<ApplicationUser> _userManager;
-        public CategoryController(ICategoryService categoryService, UserManager<ApplicationUser> userManager) 
+        public CategoryController(ICategoryService categoryService) 
         {
             _categoryService = categoryService;
-            _userManager = userManager;
         }
 
         // GET: api/category

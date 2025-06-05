@@ -30,7 +30,7 @@ namespace Book2Glow.Service.Service
             var service = await _context.Services.FirstOrDefaultAsync(b => b.Id == id);
             if (service == null)
             {
-                return false; // Service non trouvé
+                return false; 
             }
 
             _context.Services.Remove(service);
@@ -105,20 +105,17 @@ namespace Book2Glow.Service.Service
             int openingTime = business.OpeningTime;
             int closingTime = business.ClosingTime;
 
-            // 🔧 Récupère toutes les réservations + leur durée réelle
             var bookings = await _context.Bookings
                 .Where(b => b.ServiceId == serviceId && b.StartDate == date)
                 .Include(b => b.Service)
                 .ToListAsync();
 
-            // 🔁 Calcule les créneaux déjà pris
             var reservedSlots = bookings
                 .Select(b => (Start: b.StartTime, End: b.StartTime + duration))
                 .ToList();
 
             var availableSlots = new List<string>();
 
-            // 🔍 Itère sur les créneaux possibles
             for (int current = openingTime; current + duration <= closingTime; current += duration)
             {
                 double start = current;
@@ -144,16 +141,15 @@ namespace Book2Glow.Service.Service
             .AnyAsync(b => b.ServiceId == serviceId && b.StartDate == date && b.StartTime == startTime);
 
             if (alreadyBooked)
-                return "Créneau déjà réservé.";
+                return "The slot is already booked";
 
-            // 2. Récupère le service pour trouver le business
             var service = await _context.Services
                 .Include(s => s.BusinessCategory)
                 .ThenInclude(bc => bc.Business)
                 .FirstOrDefaultAsync(s => s.Id == serviceId);
 
             if (service == null)
-                return "Service introuvable.";
+                return "No Service found.";
 
             var businessId = service.BusinessCategory.BusinessId;
 
@@ -167,7 +163,6 @@ namespace Book2Glow.Service.Service
 
             await _context.Bookings.AddAsync(booking);
 
-            // 4. Crée l’entrée dans BookModel
             var book = new BookModel
             {
                 Id = Guid.NewGuid(),
@@ -179,24 +174,24 @@ namespace Book2Glow.Service.Service
             await _context.BookingsBooks.AddAsync(book);
             await _context.SaveChangesAsync();
 
-            return "Réservation effectuée avec succès.";
+            return "Successfully book";
         }
 
-        public async Task<List<BookingDto>> GetAllReservationsAsync(string userId)
+        public async Task<List<BookingDto>> GetAllBookingAsync(string userId)
         {
             var reservations = await _context.BookingsBooks
-        .Include(bb => bb.Booking)
+            .Include(bb => bb.Booking)
             .ThenInclude(b => b.Service)
                 .ThenInclude(s => s.BusinessCategory)
                     .ThenInclude(bc => bc.Business)
-        .Select(bb => new BookingDto
-        {
-            Date = bb.Booking.StartDate,
-            Heure = TimeSpan.FromMinutes(bb.Booking.StartTime).ToString(@"hh\:mm"),
-            Service = bb.Booking.Service.name,
-            Business = bb.Business.Name
-        })
-        .ToListAsync();
+            .Select(bb => new BookingDto
+            {
+                StartDate = bb.Booking.StartDate,
+                StartTime = TimeSpan.FromMinutes(bb.Booking.StartTime).ToString(@"hh\:mm"),
+                Service = bb.Booking.Service.name,
+                Business = bb.Business.Name
+            })
+            .ToListAsync();
 
             return reservations;
         }

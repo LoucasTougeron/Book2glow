@@ -17,10 +17,7 @@ namespace Book2Glow.Infrastructure.Data.Seeder
             {
                 var context = scope.ServiceProvider.GetRequiredService<DataModelContext>();
 
-                // Appliquer les migrations si ce n'est pas déjà fait
                 context.Database.Migrate();
-
-                // Vérifier si les données existent déjà
                 if (!context.Businesses.Any())
                 {
                     var businesses = new[]

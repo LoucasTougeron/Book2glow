@@ -12,12 +12,10 @@ namespace Book2Glow.Api.Controllers
     public class ServiceController:ControllerBase
     {
         private readonly IServiceService _serviceService;
-        private readonly UserManager<ApplicationUser> _userManager;
         private readonly IUserService _userService;
-        public ServiceController(IServiceService serviceService, UserManager<ApplicationUser> userManager, IUserService userService)
+        public ServiceController(IServiceService serviceService, IUserService userService)
         {
             _serviceService = serviceService;
-            _userManager = userManager;
             _userService = userService;
         }
 
@@ -42,7 +40,8 @@ namespace Book2Glow.Api.Controllers
             return Ok(service);
         }
 
-        [HttpGet("by-category-city")]
+        //GET : /api/service/categorycity?categoryId= &city=
+        [HttpGet("categorycity")]
         public async Task<ActionResult<List<ServiceDto>>> GetServicesByCategoryAndCity([FromQuery] Guid categoryId, [FromQuery] string city)
         {
             try
@@ -113,13 +112,14 @@ namespace Book2Glow.Api.Controllers
             return NoContent();
         }
 
-        [HttpGet("available-slots")]
+        [HttpGet("availableslots")]
         public async Task<IActionResult> GetAvailableSlots(Guid serviceId, int duration, DateOnly date)
         {
             var slots = await _serviceService.GetAvailableSlots(serviceId, duration, date);
             return Ok(slots);
         }
 
+        //POST /api/service/book    
         [HttpPost("book")]
         [ServiceFilter(typeof(RoleMiddleware))]
         public async Task<IActionResult> BookAppointment([FromBody] BookingRequestDto request)
@@ -132,12 +132,13 @@ namespace Book2Glow.Api.Controllers
             var result = await _serviceService.BookAppointment(
                 request.Date, request.StartTime, request.ServiceId, user.Id);
 
-            if (result == "Réservation effectuée avec succès.")
+            if (result == "Booking successful")
                 return Ok(new { success = true, message = result });
 
             return BadRequest(new { success = false, message = result });
         }
 
+        //GET : /api/service/bookings
         [HttpGet("bookings")]
         [ServiceFilter(typeof(RoleMiddleware))]
         public async Task<IActionResult> GetAllbooking ()
@@ -147,7 +148,7 @@ namespace Book2Glow.Api.Controllers
             {
                 return Unauthorized();
             }
-            var bookings = await _serviceService.GetAllReservationsAsync(user.Id);
+            var bookings = await _serviceService.GetAllBookingAsync(user.Id);
             return Ok(bookings);
         }
     }
