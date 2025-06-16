@@ -189,11 +189,24 @@ namespace Book2Glow.Service.Service
                 StartDate = bb.Booking.StartDate,
                 StartTime = TimeSpan.FromMinutes(bb.Booking.StartTime).ToString(@"hh\:mm"),
                 Service = bb.Booking.Service.name,
-                Business = bb.Business.Name
+                Business = bb.Business.Name,
+                BusinessId=bb.Business.Id,
+                ServiceId = bb.Booking.ServiceId,
             })
             .ToListAsync();
 
             return reservations;
+        }
+
+        public async Task<string> BookReview(Guid bookId,string userId, DateOnly date, int stars, string comment)
+        {
+            /*bool verifyUser = await _context.Reviews.AnyAsync(b => b.BookId == bookId && );
+            if (!verifyUser)
+            {
+                return "You are not the user for this service";
+            }
+            return "Save Review";*/
+            return "test";
         }
     }
 }

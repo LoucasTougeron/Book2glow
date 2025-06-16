@@ -36,5 +36,7 @@ namespace Book2Glow.Infrastructure.Data.Model
 
         [ForeignKey("BookingId")]
         public BookingModel Booking { get; set; }
+        public ICollection<ReviewModel> Reviews { get; set; } = new List<ReviewModel>();
+
     }
 }

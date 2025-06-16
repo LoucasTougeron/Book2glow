@@ -23,5 +23,7 @@ namespace Book2Glow.Service.Service
         Task<List<string>> GetAvailableSlots(Guid serviceId, int duration, DateOnly date);
 
         Task<string> BookAppointment(DateOnly date, int startTime, Guid serviceId, string userId);
+
+        Task<string> BookReview(Guid bookId, string userId,DateOnly date,int stars, string comment);
     }
 }
