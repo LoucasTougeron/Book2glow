@@ -1,0 +1,1100 @@
+{
+	"info": {
+		"_postman_id": "bd3c7153-20e8-4ca7-ac10-362b646df4a5",
+		"name": "book2Glow",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40394653"
+	},
+	"item": [
+		{
+			"name": "Authentification",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMxNjIwZmE3LWEzNjgtNGUzYi05NmY4LWRiMzMzNTYxNDY5NCIsInVzZXJuYW1lIjoianVsaWVuMTlAdGVzdC5mciIsImlhdCI6MTc0MTk0NDIwMiwiZXhwIjoxNzQxOTQ3ODAyfQ.FlEemlsooAlU2yEWRzM_bmqFIi4myrzRIt92GDjucZ0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"julienProvider@test.fr\",\r\n    \"password\":\"Test1321!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5199/api/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5199",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"julienCustomer@test.fr\",\r\n  \"password\": \"Test1321!\",\r\n  \"firstName\": \"julien\",\r\n  \"lastName\": \"user2\",\r\n  \"phoneNumber\": \"000000000\",\r\n  \"role\": \"Customer\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5199/api/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5199",
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Buisness",
+			"item": [
+				{
+					"name": "buisness",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxNzk0NmUxYy02MDc2LTRhZWEtODFjZS0wYWMzMmI3ZTMzNzgiLCJlbWFpbCI6Imp1bGllbkB0ZXN0LmZyIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZWlkZW50aWZpZXIiOiIxNzk0NmUxYy02MDc2LTRhZWEtODFjZS0wYWMzMmI3ZTMzNzgiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJQcm92aWRlciIsImV4cCI6MTc0NDgzMDMxNCwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdCIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3QifQ.RYz0KVsaXijHCzeW23AbDwoSy-51p7MEfaQHk9BNSoo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5199/api/business",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5199",
+							"path": [
+								"api",
+								"business"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "buisness by city",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5199/api/business/city/Paris",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5199",
+							"path": [
+								"api",
+								"business",
+								"city",
+								"Paris"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "business by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5199/api/business/f82133a3-f587-47f0-8615-6b2dd5d29633",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5199",
+							"path": [
+								"api",
+								"business",
+								"f82133a3-f587-47f0-8615-6b2dd5d29633"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "business by category",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4YzlmYjY2Ny1mOTM4LTQ1YTQtODVlOC0zMWRhNDk0YTFjZDIiLCJlbWFpbCI6Imp1bGllbjFAdGVzdC5mciIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiOGM5ZmI2NjctZjkzOC00NWE0LTg1ZTgtMzFkYTQ5NGExY2QyIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiUHJvdmlkZXIiLCJleHAiOjE3NDgwMTg3MTEsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3QiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0In0.Wz-zRDUKT2N7l6txY9PeTEEdu-nhglhYDOWzQI-PZg0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5199/api/business/categorycity?categoryId=17d171a0-8bca-46cb-95e8-4729d2ce03b0&city=Paris",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5199",
+							"path": [
+								"api",
+								"business",
+								"categorycity"
+							],
+							"query": [
+								{
+									"key": "categoryId",
+									"value": "17d171a0-8bca-46cb-95e8-4729d2ce03b0"
+								},
+								{
+									"key": "city",
+									"value": "Paris"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "buisness by user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4YzlmYjY2Ny1mOTM4LTQ1YTQtODVlOC0zMWRhNDk0YTFjZDIiLCJlbWFpbCI6Imp1bGllbjFAdGVzdC5mciIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiOGM5ZmI2NjctZjkzOC00NWE0LTg1ZTgtMzFkYTQ5NGExY2QyIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiUHJvdmlkZXIiLCJleHAiOjE3NDY3ODU0NzMsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3QiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0In0.I-2j6Wu6pI4KY4uRGtzljH-cjRfMXG9Y0T8mrWZJihI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5199/api/business/myBuisness",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5199",
+							"path": [
+								"api",
+								"business",
+								"myBuisness"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add business",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxZTk3NTY1MS1jNmZkLTQzY2YtODYxNS0wZmFlODg3NGYzMTYiLCJlbWFpbCI6Imp1bGllblByb3ZpZGVyQHRlc3QuZnIiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjFlOTc1NjUxLWM2ZmQtNDNjZi04NjE1LTBmYWU4ODc0ZjMxNiIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IlByb3ZpZGVyIiwiZXhwIjoxNzQ4OTU0Mjc1LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0IiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdCJ9.gJqyaPYMMd8sN_FrVGmKtlnX6dU0KkOjdhLEGKBeWPc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Name\": \"Salon Jolie Coupe\",\r\n    \"City\": \"Paris\",\r\n    \"PostalCode\": \"75001\",\r\n    \"Latitude\": \"48.8566\",\r\n    \"Longitude\": \"2.3522\",\r\n    \"Country\": \"France\",\r\n    \"Phone\": \"0140523011\",\r\n    \"Website\": \"https://salonJolieCoupe.fr\"\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5199/api/business",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5199",
+							"path": [
+								"api",
+								"business"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add category buisness",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxZTk3NTY1MS1jNmZkLTQzY2YtODYxNS0wZmFlODg3NGYzMTYiLCJlbWFpbCI6Imp1bGllblByb3ZpZGVyQHRlc3QuZnIiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjFlOTc1NjUxLWM2ZmQtNDNjZi04NjE1LTBmYWU4ODc0ZjMxNiIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IlByb3ZpZGVyIiwiZXhwIjoxNzQ4OTU0Mjc1LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0IiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdCJ9.gJqyaPYMMd8sN_FrVGmKtlnX6dU0KkOjdhLEGKBeWPc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5199/api/business/01973527-bc16-785d-ac9b-c4c0fd37a060/categories/01973529-a81a-7b69-b66f-89bbef3b74a6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5199",
+							"path": [
+								"api",
+								"business",
+								"01973527-bc16-785d-ac9b-c4c0fd37a060",
+								"categories",
+								"01973529-a81a-7b69-b66f-89bbef3b74a6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "modify business",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4YzlmYjY2Ny1mOTM4LTQ1YTQtODVlOC0zMWRhNDk0YTFjZDIiLCJlbWFpbCI6Imp1bGllbjFAdGVzdC5mciIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiOGM5ZmI2NjctZjkzOC00NWE0LTg1ZTgtMzFkYTQ5NGExY2QyIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiUHJvdmlkZXIiLCJleHAiOjE3NDY3ODU0NzMsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3QiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0In0.I-2j6Wu6pI4KY4uRGtzljH-cjRfMXG9Y0T8mrWZJihI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"0196b3d5-fdc6-7ff3-9cb7-a798998b5197\",\r\n    \"name\": \"Salon vachement Jolie Coupe\",\r\n    \"city\": \"Paris\",\r\n    \"postalCode\": \"75001\",\r\n    \"latitude\": \"48.8566\",\r\n    \"longitude\": \"2.3522\",\r\n    \"country\": \"France\",\r\n    \"phone\": \"0140523011\",\r\n    \"website\": \"https://salonJolieCoupe.fr\",\r\n    \"applicationUserId\": \"8c9fb667-f938-45a4-85e8-31da494a1cd2\",\r\n    \"categories\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5199/api/business/0196b3d5-fdc6-7ff3-9cb7-a798998b5197",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5199",
+							"path": [
+								"api",
+								"business",
+								"0196b3d5-fdc6-7ff3-9cb7-a798998b5197"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete business",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxNzk0NmUxYy02MDc2LTRhZWEtODFjZS0wYWMzMmI3ZTMzNzgiLCJlbWFpbCI6Imp1bGllbkB0ZXN0LmZyIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZWlkZW50aWZpZXIiOiIxNzk0NmUxYy02MDc2LTRhZWEtODFjZS0wYWMzMmI3ZTMzNzgiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJQcm92aWRlciIsImV4cCI6MTc0MjQ3Mzg3OSwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdCIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3QifQ.Uwzo8W0nzQCcvS3H2_KHAS77NLG0F4ktfTHfEXHX6DY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5199/api/business/99274dc4-02d3-48a6-3f3f-08dd67978645",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5199",
+							"path": [
+								"api",
+								"business",
+								"99274dc4-02d3-48a6-3f3f-08dd67978645"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get business category",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4YzlmYjY2Ny1mOTM4LTQ1YTQtODVlOC0zMWRhNDk0YTFjZDIiLCJlbWFpbCI6Imp1bGllbjFAdGVzdC5mciIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiOGM5ZmI2NjctZjkzOC00NWE0LTg1ZTgtMzFkYTQ5NGExY2QyIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiUHJvdmlkZXIiLCJleHAiOjE3NDY3Nzk4MzgsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3QiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0In0.MT88J7S43EHmUZd4jVT4ml8s5BfRAjvmdhOZ-6d5omg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5199/api/business/01973527-bc16-785d-ac9b-c4c0fd37a060/categories",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5199",
+							"path": [
+								"api",
+								"business",
+								"01973527-bc16-785d-ac9b-c4c0fd37a060",
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all services from business",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4YzlmYjY2Ny1mOTM4LTQ1YTQtODVlOC0zMWRhNDk0YTFjZDIiLCJlbWFpbCI6Imp1bGllbjFAdGVzdC5mciIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiOGM5ZmI2NjctZjkzOC00NWE0LTg1ZTgtMzFkYTQ5NGExY2QyIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiUHJvdmlkZXIiLCJleHAiOjE3NDY3Nzk4MzgsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3QiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0In0.MT88J7S43EHmUZd4jVT4ml8s5BfRAjvmdhOZ-6d5omg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5199/api/business/01973527-bc16-785d-ac9b-c4c0fd37a060/services",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5199",
+							"path": [
+								"api",
+								"business",
+								"01973527-bc16-785d-ac9b-c4c0fd37a060",
+								"services"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Categories",
+			"item": [
+				{
+					"name": "Categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5199/api/category",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5199",
+							"path": [
+								"api",
+								"category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Category by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5199/api/category/5d25d6a4-23a1-4b18-11b0-08dd7c15dbce",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5199",
+							"path": [
+								"api",
+								"category",
+								"5d25d6a4-23a1-4b18-11b0-08dd7c15dbce"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add category",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxZTk3NTY1MS1jNmZkLTQzY2YtODYxNS0wZmFlODg3NGYzMTYiLCJlbWFpbCI6Imp1bGllblByb3ZpZGVyQHRlc3QuZnIiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjFlOTc1NjUxLWM2ZmQtNDNjZi04NjE1LTBmYWU4ODc0ZjMxNiIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IlByb3ZpZGVyIiwiZXhwIjoxNzQ4OTU0Mjc1LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0IiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdCJ9.gJqyaPYMMd8sN_FrVGmKtlnX6dU0KkOjdhLEGKBeWPc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Name\":\"Soins du corps\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5199/api/category",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5199",
+							"path": [
+								"api",
+								"category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "modify category",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxNzk0NmUxYy02MDc2LTRhZWEtODFjZS0wYWMzMmI3ZTMzNzgiLCJlbWFpbCI6Imp1bGllbkB0ZXN0LmZyIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZWlkZW50aWZpZXIiOiIxNzk0NmUxYy02MDc2LTRhZWEtODFjZS0wYWMzMmI3ZTMzNzgiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJQcm92aWRlciIsImV4cCI6MTc0NDcyOTQ1NCwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdCIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3QifQ.FKub3nKLxA-bqsKWiFt1h6chl5pAIpz4aWDjnjCKkvM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"5d25d6a4-23a1-4b18-11b0-08dd7c15dbce\",\r\n    \"Name\":\"onglerie\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5199/api/category/5d25d6a4-23a1-4b18-11b0-08dd7c15dbce",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5199",
+							"path": [
+								"api",
+								"category",
+								"5d25d6a4-23a1-4b18-11b0-08dd7c15dbce"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete category",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxNzk0NmUxYy02MDc2LTRhZWEtODFjZS0wYWMzMmI3ZTMzNzgiLCJlbWFpbCI6Imp1bGllbkB0ZXN0LmZyIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZWlkZW50aWZpZXIiOiIxNzk0NmUxYy02MDc2LTRhZWEtODFjZS0wYWMzMmI3ZTMzNzgiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJQcm92aWRlciIsImV4cCI6MTc0NDcyOTQ1NCwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdCIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3QifQ.FKub3nKLxA-bqsKWiFt1h6chl5pAIpz4aWDjnjCKkvM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5199/api/category/5d25d6a4-23a1-4b18-11b0-08dd7c15dbce",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5199",
+							"path": [
+								"api",
+								"category",
+								"5d25d6a4-23a1-4b18-11b0-08dd7c15dbce"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Service",
+			"item": [
+				{
+					"name": "get Services",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5199/api/service",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5199",
+							"path": [
+								"api",
+								"service"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get services by city and category",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4YzlmYjY2Ny1mOTM4LTQ1YTQtODVlOC0zMWRhNDk0YTFjZDIiLCJlbWFpbCI6Imp1bGllbjFAdGVzdC5mciIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiOGM5ZmI2NjctZjkzOC00NWE0LTg1ZTgtMzFkYTQ5NGExY2QyIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiUHJvdmlkZXIiLCJleHAiOjE3NDY3Nzk4MzgsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3QiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0In0.MT88J7S43EHmUZd4jVT4ml8s5BfRAjvmdhOZ-6d5omg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5199/api/service/categorycity?categoryId=17d171a0-8bca-46cb-95e8-4729d2ce03b0&city=Paris",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5199",
+							"path": [
+								"api",
+								"service",
+								"categorycity"
+							],
+							"query": [
+								{
+									"key": "categoryId",
+									"value": "17d171a0-8bca-46cb-95e8-4729d2ce03b0"
+								},
+								{
+									"key": "city",
+									"value": "Paris"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add services",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxZTk3NTY1MS1jNmZkLTQzY2YtODYxNS0wZmFlODg3NGYzMTYiLCJlbWFpbCI6Imp1bGllblByb3ZpZGVyQHRlc3QuZnIiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjFlOTc1NjUxLWM2ZmQtNDNjZi04NjE1LTBmYWU4ODc0ZjMxNiIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IlByb3ZpZGVyIiwiZXhwIjoxNzQ4OTU0Mjc1LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0IiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdCJ9.gJqyaPYMMd8sN_FrVGmKtlnX6dU0KkOjdhLEGKBeWPc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Duration\": 30,\r\n    \"Amount\": 10.20,\r\n    \"Name\": \"Coupe homme\",\r\n    \"BusinessCategoryId\": \"822dfdde-ac76-4ec4-b388-0d805d325f16\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5199/api/service",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5199",
+							"path": [
+								"api",
+								"service"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "modify Service",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxZTk3NTY1MS1jNmZkLTQzY2YtODYxNS0wZmFlODg3NGYzMTYiLCJlbWFpbCI6Imp1bGllblByb3ZpZGVyQHRlc3QuZnIiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjFlOTc1NjUxLWM2ZmQtNDNjZi04NjE1LTBmYWU4ODc0ZjMxNiIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IlByb3ZpZGVyIiwiZXhwIjoxNzQ4OTY0ODQyLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0IiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdCJ9.cq4yu_Eh75hHyiBFJboIomRiq-RknzA5p68eRdv-euI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"5d25d6a4-23a1-4b18-11b0-08dd7c15dbce\",\r\n    \"duration\":\"\",\r\n    \"amount\":\"\",\r\n    \"name\": \"\",\r\n    \"businessCategoryId\",\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5199/api/service",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5199",
+							"path": [
+								"api",
+								"service"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete service",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxZTk3NTY1MS1jNmZkLTQzY2YtODYxNS0wZmFlODg3NGYzMTYiLCJlbWFpbCI6Imp1bGllblByb3ZpZGVyQHRlc3QuZnIiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjFlOTc1NjUxLWM2ZmQtNDNjZi04NjE1LTBmYWU4ODc0ZjMxNiIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IlByb3ZpZGVyIiwiZXhwIjoxNzQ4OTY0ODQyLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0IiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdCJ9.cq4yu_Eh75hHyiBFJboIomRiq-RknzA5p68eRdv-euI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5199/api/service/GUID",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5199",
+							"path": [
+								"api",
+								"service",
+								"GUID"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post booking",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxZTk3NTY1MS1jNmZkLTQzY2YtODYxNS0wZmFlODg3NGYzMTYiLCJlbWFpbCI6Imp1bGllblByb3ZpZGVyQHRlc3QuZnIiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjFlOTc1NjUxLWM2ZmQtNDNjZi04NjE1LTBmYWU4ODc0ZjMxNiIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IlByb3ZpZGVyIiwiZXhwIjoxNzQ4OTYyODQwLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0IiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdCJ9.IrhBJ_iXE8QDjc-fJJoezJCnT57wjVkQg9JSbTCOAx8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"date\": \"2025-02-02\",\r\n  \"startTime\": 630,\r\n  \"serviceId\": \"0197352c-c449-70a1-b9ca-845528a04009\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5199/api/service/book",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5199",
+							"path": [
+								"api",
+								"service",
+								"book"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get bookings",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxZTk3NTY1MS1jNmZkLTQzY2YtODYxNS0wZmFlODg3NGYzMTYiLCJlbWFpbCI6Imp1bGllblByb3ZpZGVyQHRlc3QuZnIiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjFlOTc1NjUxLWM2ZmQtNDNjZi04NjE1LTBmYWU4ODc0ZjMxNiIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IlByb3ZpZGVyIiwiZXhwIjoxNzQ5MDQ3OTU3LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0IiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdCJ9.z8iaDS0lBselDeMx_7b0tiLXIRVZDRyqurIC_J-UdRI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5199/api/service/bookings",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5199",
+							"path": [
+								"api",
+								"service",
+								"bookings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get availableslots",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5199/api/service/availableslots?serviceId=0197352c-c449-70a1-b9ca-845528a04009&duration=30&date=2025-02-02",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5199",
+							"path": [
+								"api",
+								"service",
+								"availableslots"
+							],
+							"query": [
+								{
+									"key": "serviceId",
+									"value": "0197352c-c449-70a1-b9ca-845528a04009"
+								},
+								{
+									"key": "duration",
+									"value": "30"
+								},
+								{
+									"key": "date",
+									"value": "2025-02-02"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "auth me",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4YzlmYjY2Ny1mOTM4LTQ1YTQtODVlOC0zMWRhNDk0YTFjZDIiLCJlbWFpbCI6Imp1bGllbjFAdGVzdC5mciIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiOGM5ZmI2NjctZjkzOC00NWE0LTg1ZTgtMzFkYTQ5NGExY2QyIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiUHJvdmlkZXIiLCJleHAiOjE3NDY3Nzk4MzgsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3QiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0In0.MT88J7S43EHmUZd4jVT4ml8s5BfRAjvmdhOZ-6d5omg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5199/api/user/me",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5199",
+							"path": [
+								"api",
+								"user",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "modify user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4YzlmYjY2Ny1mOTM4LTQ1YTQtODVlOC0zMWRhNDk0YTFjZDIiLCJlbWFpbCI6Imp1bGllbjFAdGVzdC5mciIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiOGM5ZmI2NjctZjkzOC00NWE0LTg1ZTgtMzFkYTQ5NGExY2QyIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiUHJvdmlkZXIiLCJleHAiOjE3NDU4NjQ2MDIsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3QiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0In0.o4_Ncj-AJkptk0fhCAfVJdpqPZvWMkxQTHxC1BXmdsw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"phoneNumber\": \"0601020304\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5199/api/user/me",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5199",
+							"path": [
+								"api",
+								"user",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "changes Password",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4YzlmYjY2Ny1mOTM4LTQ1YTQtODVlOC0zMWRhNDk0YTFjZDIiLCJlbWFpbCI6Imp1bGllbjFAdGVzdC5mciIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiOGM5ZmI2NjctZjkzOC00NWE0LTg1ZTgtMzFkYTQ5NGExY2QyIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiUHJvdmlkZXIiLCJleHAiOjE3NDc2Nzk3NzksImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3QiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0In0.1A-giTltMTnbrd-9SdK4jpqER-mUgqIsXw7pzTRUpMg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"oldPassword\": \"Test1321!1\",\r\n  \"newPassword\": \"Test1321!2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5199/api/user/updatepassword",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5199",
+							"path": [
+								"api",
+								"user",
+								"updatepassword"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Review",
+			"item": [
+				{
+					"name": "add review",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxZTk3NTY1MS1jNmZkLTQzY2YtODYxNS0wZmFlODg3NGYzMTYiLCJlbWFpbCI6Imp1bGllblByb3ZpZGVyQHRlc3QuZnIiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjFlOTc1NjUxLWM2ZmQtNDNjZi04NjE1LTBmYWU4ODc0ZjMxNiIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IlByb3ZpZGVyIiwiZXhwIjoxNzUwNDQ0ODE0LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0IiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdCJ9.ifs2KMCPU5VlcuFgDypS1uKVMbIgXVQe4W2iVV7agLw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"bookId\": \"de0c8e0d-efc5-4a4d-8940-94b74fbdccda\",\r\n    \"stars\": 5,\r\n    \"comments\": \"Super service, merci beaucoup !\",\r\n    \"dateTime\": \"2025-06-20\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5199/api/reviews",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5199",
+							"path": [
+								"api",
+								"reviews"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get review from business",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxZTk3NTY1MS1jNmZkLTQzY2YtODYxNS0wZmFlODg3NGYzMTYiLCJlbWFpbCI6Imp1bGllblByb3ZpZGVyQHRlc3QuZnIiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjFlOTc1NjUxLWM2ZmQtNDNjZi04NjE1LTBmYWU4ODc0ZjMxNiIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IlByb3ZpZGVyIiwiZXhwIjoxNzUwNDQ0NTQ2LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0IiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdCJ9.5gUUn-I0CynEx_Tp2e4RHhRnjBjaWcUOm1hAvKYCRzE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"bookId\": \"23ce1a4a-c258-474c-8e45-d435ed6a9d37\",\r\n    \"stars\": 5,\r\n    \"comments\": \"Super service, merci beaucoup !\",\r\n    \"dateTime\": \"2025-06-20\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5199/api/reviews/businesses/01973527-bc16-785d-ac9b-c4c0fd37a060",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5199",
+							"path": [
+								"api",
+								"reviews",
+								"businesses",
+								"01973527-bc16-785d-ac9b-c4c0fd37a060"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get review for service",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5199/api/reviews/services/0197352c-c449-70a1-b9ca-845528a04009",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5199",
+							"path": [
+								"api",
+								"reviews",
+								"services",
+								"0197352c-c449-70a1-b9ca-845528a04009"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
