@@ -3,6 +3,7 @@ using System;
 using Book2Glow.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Book2Glow.Infrastructure.Migrations
 {
     [DbContext(typeof(DataModelContext))]
-    partial class DataModelContextModelSnapshot : ModelSnapshot
+    [Migration("20250606092219_AddReviewBook")]
+    partial class AddReviewBook
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -269,8 +272,8 @@ namespace Book2Glow.Infrastructure.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("R_BookId");
 
-                    b.Property<DateOnly>("DateTime")
-                        .HasColumnType("date")
+                    b.Property<DateTime>("DateTime")
+                        .HasColumnType("timestamp with time zone")
                         .HasColumnName("R_Datetime");
 
                     b.Property<string>("comments")

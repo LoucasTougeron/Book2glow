@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Book2Glow.Infrastructure.Data.Model
@@ -36,5 +37,8 @@ namespace Book2Glow.Infrastructure.Data.Model
 
         [ForeignKey("BookingId")]
         public BookingModel Booking { get; set; }
+        [JsonIgnore]
+        public ICollection<ReviewModel> Reviews { get; set; } = new List<ReviewModel>();
+
     }
 }

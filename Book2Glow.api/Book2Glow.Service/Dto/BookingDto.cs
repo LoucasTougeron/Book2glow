@@ -12,5 +12,9 @@ namespace Book2Glow.Service.Dto
         public string StartTime { get; set; }
         public string Service { get; set; }
         public string Business { get; set; }
+
+        public Guid ServiceId {  get; set; }
+
+        public Guid BusinessId { get; set; }
     }
 }

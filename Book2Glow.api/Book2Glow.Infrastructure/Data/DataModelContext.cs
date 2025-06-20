@@ -23,6 +23,8 @@ namespace Book2Glow.Infrastructure.Data
         public DbSet<BookModel> BookingsBooks { get; set; }
 
         public DbSet<BusinessCategoryModel> BusinessCategories { get; set; }
+
+        public DbSet<ReviewModel> Reviews { get; set; } 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
@@ -73,6 +75,12 @@ namespace Book2Glow.Infrastructure.Data
                 .HasOne(s => s.BusinessCategory)
                 .WithMany(bc => bc.Services)
                 .HasForeignKey(s => s.BusinessCategoryId);
+
+            modelBuilder.Entity<ReviewModel>()
+                .HasOne(r => r.Book)
+                .WithMany(b => b.Reviews)
+                .HasForeignKey(r => r.BookId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }
