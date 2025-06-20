@@ -14,9 +14,7 @@ namespace Book2Glow.Service.Extension
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IAuthService, AuthService>();
-
-
-
+            services.AddScoped<IReviewService, ReviewService>();
         }
     }
 }

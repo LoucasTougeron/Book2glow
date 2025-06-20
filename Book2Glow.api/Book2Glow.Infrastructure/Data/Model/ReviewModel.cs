@@ -20,7 +20,7 @@ namespace Book2Glow.Infrastructure.Data.Model
         [Column("R_Comments")]
         public string comments { get; set; }
         [Column("R_Datetime")]
-        public DateTime DateTime { get; set; }
+        public DateOnly DateTime { get; set; }
         [Required]
         [Column("R_BookId")]
         public Guid BookId { get; set; }

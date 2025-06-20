@@ -197,16 +197,5 @@ namespace Book2Glow.Service.Service
 
             return reservations;
         }
-
-        public async Task<string> BookReview(Guid bookId,string userId, DateOnly date, int stars, string comment)
-        {
-            /*bool verifyUser = await _context.Reviews.AnyAsync(b => b.BookId == bookId && );
-            if (!verifyUser)
-            {
-                return "You are not the user for this service";
-            }
-            return "Save Review";*/
-            return "test";
-        }
     }
 }
