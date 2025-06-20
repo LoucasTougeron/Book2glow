@@ -170,5 +170,28 @@ namespace Book2Glow.Api.Controllers
             return NoContent();
         }
 
+        [HttpGet("{businessId}/categories")]
+        public async Task<ActionResult<IEnumerable<CategoryModel>>> GetCategoriesByBusiness(Guid businessId)
+        {
+            var categories = await _businessService.GetCategoriesByBusinessAsync(businessId);
+
+            if (categories == null)
+                return NotFound();
+
+            return Ok(categories);
+        }
+
+        [HttpGet("{businessId}/services")]
+        public async Task<ActionResult<IEnumerable<ServiceModel>>> GetServicesByBusiness(Guid businessId)
+        {
+            var services = await _businessService.GetServicesByBusinessAsync(businessId);
+
+            if (services == null)
+                return NotFound();
+
+            return Ok(services);
+        }
     }
+
 }
+

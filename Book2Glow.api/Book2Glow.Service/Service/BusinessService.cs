@@ -149,5 +149,23 @@ namespace Book2Glow.Service.Service
             return businesses;
         }
 
+        public async Task<IEnumerable<CategoryModel>> GetCategoriesByBusinessAsync(Guid businessId)
+        {
+            return await _context.BusinessCategories
+                                 .Where(bc => bc.BusinessId == businessId)
+                                 .Select(bc => bc.Category)
+                                 .Distinct()
+                                 .ToListAsync();
+        }
+
+        public async Task<IEnumerable<ServiceModel>> GetServicesByBusinessAsync(Guid businessId)
+        {
+            return await _context.BusinessCategories
+                                 .Where(bc => bc.BusinessId == businessId)
+                                 .SelectMany(bc => bc.Services)
+                                 .Distinct()
+                                 .ToListAsync();
+        }
+
     }
 }

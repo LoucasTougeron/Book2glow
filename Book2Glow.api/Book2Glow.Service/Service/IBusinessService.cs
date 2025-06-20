@@ -22,5 +22,7 @@ namespace Book2Glow.Service.Service
         Task AddCategoryToBusinessAsync(Guid businessId, Guid categoryId);
 
         Task<List<BusinessModel>> GetBusinessByCategoryAndCity(Guid categoryId, string city);
+        Task<IEnumerable<CategoryModel>> GetCategoriesByBusinessAsync(Guid businessId);
+        Task<IEnumerable<ServiceModel>> GetServicesByBusinessAsync(Guid businessId);
     }
 }
